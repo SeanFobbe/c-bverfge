@@ -1235,11 +1235,13 @@ dt.segmented.full$text <- gsub(" ",
 
 
 #'## Stichprobe Metadaten
-dt.meta.html[sample(.N, 50)]
+fwrite(dt.meta.html[sample(.N, 50)],
+       "QA_Stichprobe_HTML-Metadaten")
 
 
 #'## Stichprobe Segmentierte Variante
-dt.segmented.full[sample(.N, 30)]
+fwrite(dt.segmented.full[sample(.N, 30)],
+       "QA_Stichprobe_HTML-SegmentierterVolltext")
 
 
 
