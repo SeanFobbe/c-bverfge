@@ -479,7 +479,6 @@ df.bverfg <- readtext("*.txt",
 
 #+
 #'# Variablen
-#'\label{variablen}
 
 #+
 #'## Hinweise
