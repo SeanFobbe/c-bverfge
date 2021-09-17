@@ -59,7 +59,7 @@ source("General_Source_Functions.R")
 
 datasetname <- "C-BVerfGE"
 doi.concept <- "10.5281/zenodo.3831111" # checked
-doi.version <- "???" # checked
+doi.version <- "10.5281/zenodo.5514094" # checked
 
 
 files.zip <- list.files(pattern = "\\.zip")

@@ -108,7 +108,7 @@ datasetname <- "C-BVerfGE"
 doi.concept <- "10.5281/zenodo.3831111"
 
 #'## DOI der konkreten Version
-doi.version <- "???"
+doi.version <- "10.5281/zenodo.5514094"
 
 #'## Lizenz
 license <- "Creative Commons Zero 1.0 Universal"
