@@ -1185,7 +1185,7 @@ ggplot(data = freqtable) +
                              N),
                  y = N),
              stat = "identity",
-             fill ="#ca2129",
+             fill = "#ca2129",
              color = "black") +
     coord_flip()+
     theme_bw() +
@@ -1466,8 +1466,8 @@ testresult <- system2("gpg2",
 testresult <- gsub('"', '', testresult)
 
 #+ echo = TRUE
-kable(testresult, format = "latex", booktabs=TRUE,
-      longtable=TRUE, col.names = c("Ergebnis"))
+kable(testresult, format = "latex", booktabs = TRUE,
+      longtable = TRUE, col.names = c("Ergebnis"))
 
 
 #'\newpage
@@ -1508,18 +1508,22 @@ kable(testresult, format = "latex", booktabs = TRUE,
 #+
 #'# Changelog
 #'
-#'## \version
+#'## Version \version
 #'
 #' \begin{itemize}
 #' \item Vollständige Aktualisierung der Daten
-#' \item Neue Variablen: Lizenz, Typ der Entscheidung, Pressemitteilung, Zitiervorschlag, allen Aktenzeichen, Verfahrensart (?), Kurzbeschreibung und Richtern, Verfahrensart
+#' \item Neue Variablen: Lizenz, Typ der Entscheidung, Zeichenzahl, Pressemitteilung, Zitiervorschlag, Aktenzeichen (alle), Verfahrensart, Kurzbeschreibung und Richter
 #' \item Neue Variante: Linguistischen Annotationen
 #' \item Neue Variante: Segmentiert
 #' \item Neue Variante: HTML
+#' \item Erweiterung der Codebook-Dokumentation
+#' \item Strenge Kontrolle und semantische Sortierung der Variablen-Namen
+#' \item Abgleich der selbst berechneten ECLI mit der in der HTML-Fassung dokumentierten ECLI
+#' \item Variable für Entscheidungstyp wird nun aus dem Zitiervorschlag berechnet um eine höhere Genaugikeit zu gewährleisten
 #' \end{itemize}
 #'
 #' 
-#'## 2021-01-03 
+#'## Version 2021-01-03 
 #'
 #' \begin{itemize}
 #' \item Vollständige Aktualisierung der Daten
@@ -1537,7 +1541,7 @@ kable(testresult, format = "latex", booktabs = TRUE,
 #' \item Umstellung auf Stichtags-Versionierung
 #' \end{itemize}
 #' 
-#'## 1.1.0 
+#'## Version 1.1.0 
 #'
 #' \begin{itemize}
 #' \item Vollständige Aktualisierung der Daten
@@ -1546,7 +1550,7 @@ kable(testresult, format = "latex", booktabs = TRUE,
 #' \item Stichtag: 2020-08-09
 #' \end{itemize}
 #' 
-#'## 1.0.0
+#'## Version 1.0.0
 #'
 #' \begin{itemize}
 #' \item Erstveröffentlichung
