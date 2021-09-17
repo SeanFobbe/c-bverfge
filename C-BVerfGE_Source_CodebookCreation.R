@@ -479,6 +479,7 @@ df.bverfg <- readtext("*.txt",
 
 #+
 #'# Variablen
+#'\label{variablen}
 
 #+
 #'## Hinweise
@@ -512,6 +513,7 @@ df.bverfg <- readtext("*.txt",
 #'text  & String & (Nur CSV-Datei) Der vollständige Inhalt der Entscheidung, so wie er in der von www.bundesverfassungsgericht.de heruntergeladenen PDF-Datei dokumentiert ist.\\
 #'gericht & Alphabetisch & In diesem Datensatz ist nur der Wert \enquote{BVerfG} vergeben. Dies ist der ECLI-Gerichtscode für \enquote{Bundesverfassungsgericht}. Diese Variable dient vor allem zur einfachen und transparenten Verbindung der Daten mit anderen Datensätzen.\\
 #'datum & Datum & Das Datum der Entscheidung im Format YYYY-MM-DD (Langform nach ISO-8601). Die Langform ist für Menschen einfacher lesbar und wird maschinell auch öfter automatisch als Datumsformat erkannt.\\
+#' entscheidung\_typ & Alphabetisch &  (Nur CSV-Datei) Der Typ der Entscheidung. Es sind die Werte \enquote{B} (Beschluss) und \enquote{U} (Urteil) vergeben. Wurde durch \emph{regular expressions} aus der Variable \enquote{zitiervorschlag} berechnet.\\
 #'spruchkoerper\_typ & Alphabetisch & Der Typ des Spruchkörpers. Es sind die Werte \enquote{K} (Kammer), \enquote{S} (Senat), \enquote{P} (Plenum) und \enquote{B} (Beschwerdekammer gem. § 97c BVerfGG) vergeben.\\
 #'spruchkoerper\_az & Natürliche Zahl & Der im Aktenzeichen angegebene Spruchkörper. Es sind nur die Werte \enquote{1} und \enquote{2} vergeben. Die Werte stehen für den 1. oder 2. Senat des Gerichts. Für Verzögerungsentscheidungen der Beschwerdekammer ist der Wert \enquote{NA}. \textbf{Achtung:} Um die Entscheidungen eines bestimmten Senats zu analysieren reicht es nicht, die Variable \enquote{spruchkoerper\_az} zu nutzen, es muss zusätzlich noch die Variable \enquote{spruchkoerper\_typ} auf \enquote{S} gesetzt werden, weil ansonsten noch mit dem Senat assoziierte Entscheidungen seiner Kammern und des Plenums mit ausgewählt werden. \\
 #'registerzeichen & Alphabetisch & Das amtliche Registerzeichen. Es gibt die Verfahrensart an, in der die Entscheidung ergangen ist. Eine Erläuterung der Registerzeichen findet sich unter Punkt \ref{register}.\\
@@ -533,6 +535,7 @@ df.bverfg <- readtext("*.txt",
 #' version & Datum & (Nur CSV-Datei) Die Versionsnummer des Datensatzes im Format YYYY-MM-DD (Langform nach ISO-8601). Die Versionsnummer entspricht immer dem Datum an dem der Datensatz erstellt und die Daten von der Webseite des Gerichts abgerufen wurden.\\
 #' doi\_concept & String & (Nur CSV-Datei) Der Digital Object Identifier (DOI) des Gesamtkonzeptes des Datensatzes. Dieser ist langzeit-stabil (persistent). Über diese DOI kann via www.doi.org immer die \textbf{aktuellste Version} des Datensatzes abgerufen werden. Prinzip F1 der FAIR-Data Prinzipien (\enquote{data are assigned globally unique and persistent identifiers}) empfiehlt die Dokumentation jeder Messung mit einem persistenten Identifikator. Selbst wenn die CSV-Dateien ohne Kontext weitergegeben werden kann ihre Herkunft so immer zweifelsfrei und maschinenlesbar bestimmt werden.\\
 #' doi\_version & String & (Nur CSV-Datei) Der Digital Object Identifier (DOI) der \textbf{konkreten Version} des Datensatzes. Dieser ist langzeit-stabil (persistent). Über diese DOI kann via www.doi.org immer diese konkrete Version des Datensatzes abgerufen werden. Prinzip F1 der FAIR-Data Prinzipien (\enquote{data are assigned globally unique and persistent identifiers}) empfiehlt die Dokumentation jeder Messung mit einem persistenten Identifikator. Selbst wenn die CSV-Dateien ohne Kontext weitergegeben werden kann ihre Herkunft so immer zweifelsfrei und maschinenlesbar bestimmt werden.\\
+#' lizenz & String & Die Lizenz für den Gesamtdatensatz. In diesem Datensatz immer \enquote{Creative Commons Zero 1.0 Universal}.\\
 #' 
 #'\bottomrule
 #' 
@@ -1414,25 +1417,18 @@ kable(testresult, format = "latex", booktabs = TRUE,
 #+
 #'# Changelog
 #'
-#'\ra{1.3}
-#'
-#' 
-#'\begin{centering}
-#'\begin{longtable}{p{2.5cm}p{11.5cm}}
-#'\toprule
-#'Version &  Details\\
-#'\midrule
-#'
-#' \version &
+#'## \version
 #'
 #' \begin{itemize}
 #' \item Vollständige Aktualisierung der Daten
-#' \item Neue Variable für Lizenz
-#' \item neue Variante mit linguistischen Annotationen
-#' \end{itemize}\\
+#' \item Neue Variablen: Lizenz, Typ der Entscheidung, Pressemitteilung, Zitiervorschlag, allen Aktenzeichen, Verfahrensart (?), Kurzbeschreibung und Richtern
+#' \item Neue Variante: Linguistischen Annotationen
+#' \item Neue Variante: Segmentiert
+#' \item Neue Variante: HTML
+#' \end{itemize}
 #'
 #' 
-#' 2021-01-03  &
+#'## 2021-01-03 
 #'
 #' \begin{itemize}
 #' \item Vollständige Aktualisierung der Daten
@@ -1448,27 +1444,24 @@ kable(testresult, format = "latex", booktabs = TRUE,
 #' \item Variable \enquote{Suffix} in \enquote{kollision} umbenannt.
 #' \item Variable \enquote{Ordinalzahl} in \enquote{eingangsnummer} umbenannt.
 #' \item Umstellung auf Stichtags-Versionierung
-#' \end{itemize}\\
+#' \end{itemize}
 #' 
-#'1.1.0  &
+#'## 1.1.0 
 #'
 #' \begin{itemize}
 #' \item Vollständige Aktualisierung der Daten
 #' \item Angleichung der Variablen-Namen an andere Datensätze der CE-Serie von \url{https://zenodo.org/communities/sean-fobbe-data/}
 #' \item Einführung der Variable \enquote{Suffix} um weitere Entscheidungen korrekt erfassen zu können; aufgrund der fehlenden Berücksichtigung des Suffix wurden einige wenige Entscheidungen in Version 1.0.0 irrtümlich von der Sammlung ausgeschlossen.
 #' \item Stichtag: 2020-08-09
-#' \end{itemize}\\
+#' \end{itemize}
 #' 
-#'1.0.0  &
+#'## 1.0.0
 #'
 #' \begin{itemize}
 #' \item Erstveröffentlichung
 #' \item Stichtag: 2020-05-16
-#' \end{itemize}\\
+#' \end{itemize}
 #' 
-#'\bottomrule
-#'\end{longtable}
-#'\end{centering}
 
 #'\newpage
 #+
