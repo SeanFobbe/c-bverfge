@@ -325,14 +325,13 @@ f.bverfg.extract.meta <- function(HTML){
         pressemitteilung <-  "NA"
     }else{
         pressemitteilung <- pressemitteilung[1]
-        }
+    }
 
     ## Kurzbeschreibung
-
     kurzbeschreibung <- HTML %>% html_elements("title") %>% html_text(trim = TRUE)
     kurzbeschreibung <- gsub(".*Bundesverfassungsgericht.*-.*Entscheidungen.*-(.*)",
-                  "\\1",
-                  kurzbeschreibung)
+                             "\\1",
+                             kurzbeschreibung)
     kurzbeschreibung <- trimws(kurzbeschreibung)
 
     
