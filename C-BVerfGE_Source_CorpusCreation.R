@@ -1695,18 +1695,20 @@ txt.bverfg <- merge(txt.bverfg,
 
 
 
+
+
 #'## Variable "entscheidung_typ" hinzufügen
 
 
 #+
 #'### Zitiervorschläge parsen
-entscheidung_typ.main <- gsub(".*(Beschluss|Urteil|Verfügung|Order).*",
+entscheidung_typ.main <- gsub(".*(Beschluss|Urteil|Verfügung).*",
                               "\\1",
                               txt.bverfg$zitiervorschlag,
                               ignore.case = TRUE)
 
 
-entscheidung_typ.segmented <- gsub(".*(Beschluss|Urteil|Verfügung|Order).*",
+entscheidung_typ.segmented <- gsub(".*(Beschluss|Urteil|Verfügung).*",
                                    "\\1",
                                    dt.segmented.full$zitiervorschlag,
                                    ignore.case = TRUE)
@@ -1716,12 +1718,10 @@ entscheidung_typ.segmented <- gsub(".*(Beschluss|Urteil|Verfügung|Order).*",
 #'### Kürzen
 
 lang.etyp <- c("Urteil",
-               "Order",
                "Beschluss",
                "Verfügung")
 
 kurz.etyp <- c("U",
-               "B",
                "B",
                "V")
 
@@ -1743,7 +1743,6 @@ entscheidung_typ.segmented <- mgsub(entscheidung_typ.segmented,
 txt.bverfg$entscheidung_typ <- entscheidung_typ.main
 
 dt.segmented.full$entscheidung_typ <- entscheidung_typ.segmented
-
 
 
 
