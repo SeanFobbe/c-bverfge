@@ -1165,11 +1165,13 @@ html.list <- lapply(files.html,
 
 #'## HTML-Dateien parsen
 
-meta.list <- lapply(html.list,
-                    f.bverfg.extract.meta)
+meta.list <- mclapply(html.list,
+                      f.bverfg.extract.meta,
+                      mc.cores = fullCores)
 
-content.list <- lapply(html.list,
-                       f.bverfg.extract.content)
+content.list <- mclapply(html.list,
+                         f.bverfg.extract.content,
+                         mc.cores = fullCores)
 
 segmented.full.list <- vector("list",
                               length(meta.list))
