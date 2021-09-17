@@ -873,7 +873,7 @@ freqtable <- table.entsch.typ[-.N]
 
 #'\vspace{0.5cm}
 
-#+ C-BVerfGE_02_Barplot_Entscheidung_Typ, fig.height = 5, fig.width = 8
+#+ C-BVerfGE_02_Barplot_Entscheidung_Typ, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = reorder(entscheidung_typ,
                              -N),
@@ -923,7 +923,7 @@ kable(table.entsch.typ,
 freqtable <- table.spruch.typ[-.N]
 
 
-#+ C-BVerfGE_03_Barplot_Spruchkoerper_Typ, fig.height = 5, fig.width = 8
+#+ C-BVerfGE_03_Barplot_Spruchkoerper_Typ, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = reorder(spruchkoerper_typ,
                              -N),
@@ -977,7 +977,7 @@ kable(table.spruch.typ,
 freqtable <- table.spruch.az[-.N]
 
 
-#+ C-BVerfGE_04_Barplot_Spruchkoerper_AZ, fig.height = 5, fig.width = 8
+#+ C-BVerfGE_04_Barplot_Spruchkoerper_AZ, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = spruchkoerper_az,
                  y = N),
@@ -1075,7 +1075,7 @@ kable(table.regz,
 #'\vspace{0.5cm}
 freqtable <- table.output.praesi[-.N]
 
-#+ C-BVerfGE_06_Barplot_PraesidentIn, fig.height = 5.5, fig.width = 8
+#+ C-BVerfGE_06_Barplot_PraesidentIn, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = reorder(praesi,
                              N),
@@ -1124,7 +1124,7 @@ kable(table.output.praesi,
 freqtable <- table.output.vpraesi[-.N]
 
 
-#+ C-BVerfGE_07_Barplot_VizePraesidentIn, fig.height = 5.5, fig.width = 8
+#+ C-BVerfGE_07_Barplot_VizePraesidentIn, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = reorder(v_praesi,
                              N),
@@ -1178,7 +1178,7 @@ kable(table.output.vpraesi,
 #'\vspace{0.5cm}
 freqtable <- table.jahr.entscheid[-.N][,lapply(.SD, as.numeric)]
 
-#+ C-BVerfGE_08_Barplot_Entscheidungsjahr, fig.height = 7, fig.width = 11
+#+ C-BVerfGE_08_Barplot_Entscheidungsjahr, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = entscheidungsjahr,
                  y = N),
@@ -1229,7 +1229,7 @@ kable(table.jahr.entscheid,
 freqtable <- table.jahr.eingangISO[-.N][,lapply(.SD, as.numeric)]
 
 
-#+ C-BVerfGE_09_Barplot_EingangsjahrISO, fig.height = 7, fig.width = 11
+#+ C-BVerfGE_09_Barplot_EingangsjahrISO, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = eingangsjahr_iso,
                  y = N),
