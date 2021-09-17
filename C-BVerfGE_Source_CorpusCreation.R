@@ -2534,6 +2534,7 @@ setcolorder(txt.bverfg,
               "lizenz"))
 
 
+#'\newpage
 #+
 #'### Variablen sortieren: Metadaten
 
@@ -2573,6 +2574,7 @@ setcolorder(meta.bverfg,
               "lizenz"))
 
 
+#'\newpage
 #+
 #'### Variablen sortieren: Segmentiert
 
@@ -2611,7 +2613,7 @@ setcolorder(dt.segmented.full,
               "lizenz"))
 
 
-
+#'\newpage
 #'## Anzahl Variablen der Datensätze
 
 length(txt.bverfg)
