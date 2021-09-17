@@ -33,6 +33,7 @@
 #'## Endprodukte
 
 #' Primäre Endprodukte des Skripts sind folgende ZIP-Archive:
+#' 
 #' \begin{enumerate}
 #' \item Der volle Datensatz im CSV-Format
 #' \item Die reinen Metadaten im CSV-Format (wie unter 1, nur ohne Entscheidungstexte)
@@ -64,6 +65,8 @@
 #' Mit der Funktion **render()** von **rmarkdown** können der **vollständige Datensatz** und das **Codebook** kompiliert und die Skripte mitsamt ihrer Rechenergebnisse in ein gut lesbares PDF-Format überführt werden.
 #'
 #' Alle Kommentare sind im roxygen2-Stil gehalten. Die beiden Skripte können daher auch **ohne render()** regulär als R-Skripte ausgeführt werden. Es wird in diesem Fall kein PDF-Bericht erstellt und Diagramme werden nicht abgespeichert.
+
+
 
 #+
 #'### Datensatz 
@@ -131,6 +134,8 @@ mode.annotate <- TRUE
 
 #'## Optionen: Quanteda
 tokens_locale <- "de_DE"
+
+
 
 
 #'## Optionen: Knitr
@@ -244,6 +249,12 @@ quanteda_options(threads = fullCores)
 #+
 #'### Data.table
 setDTthreads(threads = fullCores)  
+
+
+
+
+
+
 
 
 
@@ -1149,7 +1160,7 @@ print(missing)
 
 
 
-#'# HTML Parsen
+#'# HTML verarbeiten
 
 #+
 #'## HTML-Dateien definieren
