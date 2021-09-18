@@ -108,10 +108,10 @@ rmarkdown::render(input = "C-BVerfGE_Source_CodebookCreation.R",
 datasetname <- "C-BVerfGE"
 
 #'## DOI des Datensatz-Konzeptes
-doi.concept <- "10.5281/zenodo.3831111"
+doi.concept <- "10.5281/zenodo.3831111" # checked
 
 #'## DOI der konkreten Version
-doi.version <- "10.5281/zenodo.5514094"
+doi.version <- "10.5281/zenodo.5514094" # checked
 
 #'## Lizenz
 license <- "Creative Commons Zero 1.0 Universal"
