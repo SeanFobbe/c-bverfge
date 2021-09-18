@@ -1162,7 +1162,7 @@ print(missing)
 
 #'# HTML verarbeiten
 
-                                        #+
+#+
 #'## HTML-Dateien definieren
 
 files.html <- list.files(pattern = "\\.html")
