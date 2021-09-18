@@ -389,7 +389,7 @@ df.bverfg <- readtext("*.txt",
 
 #'An den Entscheidungstexten und amtlichen Leitsätzen besteht gem. § 5 Abs. 1 UrhG kein Urheberrecht, da sie amtliche Werke sind. § 5 UrhG ist auf amtliche Datenbanken analog anzuwenden (BGH, Beschluss vom 28.09.2006, I ZR 261/03, \enquote{Sächsischer Ausschreibungsdienst}).
 #'
-#' Der HTML-Quelltext wurde --- wie in jeder HTML-Datei selbst dokumentiert ist --- mit dem Government Site Builder der Bundesverwaltung erstellt, d.h. computergeneriert. Durch Maschinen generierte Texte sind keine \enquote{persönliche geistige Schöpfung} iSv § 2 Abs. 2 UrhG und daher urheberrechtlich nicht geschützt. Den verbleibenden Text-Bestandteilen (z.B. Buttons) fehlt es mindestens an der Schöpfungshöhe. Bilder oder andere Texte als Entscheidungstexte werden nicht abgerufen.
+#' Der HTML-Quelltext wurde --- wie in jeder HTML-Datei selbst dokumentiert ist --- mit dem \enquote{Government Site Builder} der Bundesverwaltung erstellt, d.h. computergeneriert. Durch Maschinen generierte Texte sind keine \enquote{persönliche geistige Schöpfung} iSv § 2 Abs. 2 UrhG und daher urheberrechtlich nicht geschützt. Den verbleibenden Text-Bestandteilen (z.B. Buttons) fehlt es mindestens an der Schöpfungshöhe. Bilder oder andere Texte als Entscheidungstexte werden nicht abgerufen.
 #'
 #' Alle eigenen Beiträge (z.B. durch Zusammenstellung und Anpassung der Metadaten) und damit den gesamten Datensatz stelle ich gemäß einer \emph{CC0 1.0 Universal Public Domain Lizenz} vollständig urheberrechtsfrei.
 
@@ -438,7 +438,7 @@ df.bverfg <- readtext("*.txt",
 #+
 #'# Varianten und Zielgruppen
 
-#' Dieser Datensatz ist in verschiedenen Varianten verfügbar, die sich an unterschiedliche Zielgruppen richten. Zielgruppe sind nicht nur quantitativ forschende RechtswissenschaftlerInnen, sondern auch traditionell arbeitende JuristInnen. Idealerweise müssen quantitative Methoden ohnehin immer durch qualitative Interpretation, Theoriebildung und kritische Auseinandersetzung verstärkt werden (\emph{mixed methods approach}).
+#' Dieser Datensatz ist in verschiedenen Varianten verfügbar, die sich an unterschiedliche Zielgruppen richten. Zielgruppe sind nicht nur quantitativ forschende Rechtswissenschaftler:innen, sondern auch traditionell arbeitende Jurist:innen. Idealerweise müssen quantitative Methoden ohnehin immer durch qualitative Interpretation, Theoriebildung und kritische Auseinandersetzung verstärkt werden (\emph{mixed methods approach}).
 #'
 #' Lehrende werden zudem von den vorbereiteten Tabellen und Diagrammen besonders profitieren, die bei der Erläuterung der Charakteristika der Daten hilfreich sein können und Zeit im universitären Alltag sparen. Alle Tabellen und Diagramme liegen auch als separate Dateien vor um sie einfach z.B. in Präsentations-Folien oder Handreichungen zu integrieren.
 
@@ -478,7 +478,7 @@ df.bverfg <- readtext("*.txt",
 
 
 #+
-#'# Variablen
+#'# Variablen (Allgemein)
 
 #+
 #'## Hinweise
@@ -526,14 +526,14 @@ df.bverfg <- readtext("*.txt",
 #' band & Natürliche Zahl & Der Band der amtlichen Sammlung in dem die Entscheidung veröffentlicht ist.\\
 #' seite & Natürliche Zahl & Die genaue Fundstelle (Seitenzahl) der Entscheidung im jeweiligen Band der amtlichen Sammlung. Nur sinnvoll nutzbar im Zusammenspiel mit der Variable \enquote{band}.\\
 #' aktenzeichen & String & (Nur CSV-Datei) Das amtliche Aktenzeichen. Die Variable wurde aus den Variablen \enquote{spruchkoerper\_az}, \enquote{registerzeichen}, \enquote{eingangsnummer} und \enquote{eingangsjahr\_az} durch den Autor des Datensatzes berechnet. Im Falle mehrere verbundener Verfahren mit einer einheitlichen Entscheidung ist dies das Aktenzeichen des Pilotverfahrens.\\
-#' aktenzeichen\_alle & String & (Nur CSV-Datei) Alle Aktenzeichen der mit der Entscheidung abgeschlossenen Verfahren, falls es sich um verbunden Verfahren mit einheitlicher Entscheidung handelt. Ansonsten ist der Wert dieser Variable identisch mit der Variable \enquote{aktenzeichen}.\\ 
+#' aktenzeichen\_alle & String & (Nur CSV-Datei) Alle Aktenzeichen der von der Entscheidung betroffenen Verfahren, falls es sich um verbunden Verfahren mit einheitlicher Entscheidung handelt. Ansonsten ist der Wert dieser Variable identisch mit der Variable \enquote{aktenzeichen}.\\ 
 #' ecli & String & (Nur CSV-Datei) Der European Case Law Identifier (ECLI) der Entscheidung. Jeder Entscheidung ist eine einzigartige ECLI zugewiesen, ggf. mit Kollisisions-ID. Die ECLI ist vor allem dann hilfreich, wenn dieser Datensatz mit anderen Datensätzen zusammengeführt werden und Dopplungen vermieden werden sollen. Alle inhaltlichen Bestandteile der ECLI sind in diesem Datensatz zusätzlich auch anderen und besser verständlichen Variablen zugewiesen. Nutzen Sie bevorzugt diese anderen Variablen, statt Informationen aus der ECLI zu extrahieren. Die Variable wurde aus den Variablen \enquote{entscheidungsjahr}, \enquote{spruchkoerper\_typ}, \enquote{datum}, \enquote{kollision}, \enquote{spruchkoerper\_az}, \enquote{registerzeichen},  \enquote{eingangsnummer} und \enquote{eingangsjahr\_az} durch den Autor des Datensatzes berechnet.\\
 #' zitiervorschlag & String & (Nur CSV-Datei) Der vom BVerfG vorgegebene Zitiervorschlag.\\
 #' kurzbeschreibung & String & (Nur CSV-Datei) Kurzbeschreibung des Inhalts des Verfahrens wie auf der Website des BVerfG angegeben.\\
-#' pressemitteilung & String & (Nur CSV-Datei) Nummer und Tag der zugehörigen Pressemitteilung, falls vorhanden. Ansonsten \enquote{NA}.\\
+#' pressemitteilung & String & (Nur CSV-Datei) Nummer und Datum der zugehörigen Pressemitteilung, falls vorhanden. Ansonsten \enquote{NA}.\\
 #' praesi & String & (Nur CSV-Datei) Der Nachname des oder der Präsident:in in dessen/deren Amtszeit das Datum der Entscheidung fällt.\\
 #' v\_praesi & String & (Nur CSV-Datei) Der Nachname des oder der Vize-Präsident:in in dessen/deren Amtszeit das Datum der Entscheidung fällt.\\
-#' richter & String & (Nur CSV-Datei) Die Nachnamen der Richter:innen, die die Entscheidung unterschrieben haben. Ggf. mit Angabe falls die Person verhindert war. Die einzelnen Namen sind jeweils durch vertikale Striche \enquote{|} voneinander getrennt.\\
+#' richter & String & (Nur CSV-Datei) Die Nachnamen der Richter:innen, die die Entscheidung unterschrieben haben. Ggf. mit Angabe falls die Person verhindert war. Die einzelnen Namen sind jeweils durch vertikale Striche (\enquote{|}) voneinander getrennt.\\
 #' zeichen & Natürliche Zahl & (Nur CSV-Datei) Die Anzahl Zeichen eines Dokumentes.\\
 #' tokens & Natürliche Zahl & (Nur CSV-Datei) Die Anzahl Tokens (beliebige Zeichenfolge getrennt durch whitespace) eines Dokumentes. Diese Zahl kann je nach Tokenizer und verwendeten Einstellungen erheblich schwanken. Für diese Berechnung wurde eine reine Tokenisierung ohne Entfernung von Inhalten durchgeführt. Benutzen Sie diesen Wert eher als Anhaltspunkt für die Größenordnung denn als exakte Aussage und führen sie ggf. mit ihrer eigenen Software eine Kontroll-Rechnung durch.\\
 #' typen & Natürliche Zahl & (Nur CSV-Datei) Die Anzahl \emph{einzigartiger} Tokens (beliebige Zeichenfolge getrennt durch whitespace) eines Dokumentes. Diese Zahl kann je nach Tokenizer und verwendeten Einstellungen erheblich schwanken. Für diese Berechnung wurde eine reine Tokenisierung und Typenzählung ohne Entfernung von Inhalten durchgeführt. Benutzen Sie diesen Wert eher als Anhaltspunkt für die Größenordnung denn als exakte Aussage und führen sie ggf. mit ihrer eigenen Software eine Kontroll-Rechnung durch.\\
