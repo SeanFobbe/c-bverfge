@@ -1162,7 +1162,7 @@ print(missing)
 
 #'# HTML verarbeiten
 
-#+
+                                        #+
 #'## HTML-Dateien definieren
 
 files.html <- list.files(pattern = "\\.html")
@@ -1176,13 +1176,11 @@ html.list <- lapply(files.html,
 
 #'## HTML-Dateien parsen
 
-meta.list <- mclapply(html.list,
-                      f.bverfg.extract.meta,
-                      mc.cores = fullCores)
+meta.list <- lapply(html.list,
+                    f.bverfg.extract.meta)
 
-content.list <- mclapply(html.list,
-                         f.bverfg.extract.content,
-                         mc.cores = fullCores)
+content.list <- lapply(html.list,
+                       f.bverfg.extract.content)
 
 segmented.full.list <- vector("list",
                               length(meta.list))
@@ -1193,7 +1191,7 @@ for (i in 1:length(meta.list)){
     segmented.full.list[[i]] <- cbind(content.list[[i]],
                                       meta.replicate)
 
-    }
+}
 
 
 
