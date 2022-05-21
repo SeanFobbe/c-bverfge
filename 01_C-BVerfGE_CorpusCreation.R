@@ -75,6 +75,10 @@ library(future.apply) # Apply-Funtionen für Futures
 #'## Zusätzliche Funktionen einlesen
 #' **Hinweis:** Die hieraus verwendeten Funktionen werden jeweils vor der ersten Benutzung in vollem Umfang angezeigt um den Lesefluss zu verbessern.
 
+
+source("functions/f.bverfg.extract.content.R")
+source("functions/f.bverfg.extract.meta.R")
+
 source("R-fobbe-proto-package/f.remove.specialunderline.R")
 source("R-fobbe-proto-package/f.linkextract.R")
 
@@ -86,9 +90,6 @@ source("R-fobbe-proto-package/f.future_lingsummarize.R")
 source("R-fobbe-proto-package/f.future_multihashes.R")
 source("R-fobbe-proto-package/f.future_pdf_to_txt.R")
 source("R-fobbe-proto-package/f.future_spacyparse.R")
-
-
-
 
 
 
