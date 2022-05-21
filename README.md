@@ -12,7 +12,6 @@ Alle mit diesem Skript erstellten Datensätze werden dauerhaft kostenlos und urh
 
 Primäre Endprodukte des Skripts sind folgende ZIP-Archive (im Ordner 'output'):
 
-
 -  Der volle Datensatz im CSV-Format
 -  Die reinen Metadaten im CSV-Format (wie unter 1, nur ohne Entscheidungstexte)
 -  (Optional) Tokenisierte Form aller Texte mit linguistischen Annotationen im CSV-Format
