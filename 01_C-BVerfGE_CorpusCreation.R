@@ -54,20 +54,22 @@ print(begin.script)
 #+
 #'## Packages Laden
 
+library(magick)       # Cropping von PNG-Dateien
+library(RcppTOML)     # Verarbeitung von TOML-Format
 library(mgsub)        # Mehrfache simultane String-Substitutions
 library(httr)         # HTTP-Werkzeuge
 library(rvest)        # HTML/XML-Extraktion
 library(knitr)        # Professionelles Reporting
 library(kableExtra)   # Verbesserte Kable Tabellen
 library(pdftools)     # Verarbeitung von PDF-Dateien
-library(doParallel)   # Parallelisierung
 library(ggplot2)      # Fortgeschrittene Datenvisualisierung
 library(scales)       # Skalierung von Diagrammen
 library(data.table)   # Fortgeschrittene Datenverarbeitung
 library(readtext)     # TXT-Dateien einlesen
 library(quanteda)     # Fortgeschrittene Computerlinguistik
 library(spacyr)       # Linguistische Annotationen
-
+library(future)       # Parallelisierung mit Futures
+library(future.apply) # Apply-Funtionen für Futures
 
 
 #'## Zusätzliche Funktionen einlesen
