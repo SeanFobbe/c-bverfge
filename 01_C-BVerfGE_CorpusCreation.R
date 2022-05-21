@@ -293,6 +293,8 @@ if (config$cores$max == FALSE){
 
 print(fullCores)
 
+
+
 #'### Quanteda
 quanteda_options(threads = fullCores) 
 
@@ -513,10 +515,31 @@ filenames1 <- gsub("_([kps])_",
 
 #'### Erste strenge REGEX-Validierung der Dateinamen
 
-regex.test1 <- grep("BVerfG_[0-9]{4}-[0-9]{2}-[0-9]{2}_[A-Z]_[0-9NA]+_[A-Za-z]+_[0-9]{4}_[0-9]{2}_[0-9a-zNA]+$",
+#regex.test1 <- grep("BVerfG_[0-9]{4}-[0-9]{2}-[0-9]{2}_[A-Z]_[0-9NA]+_[A-Za-z]+_[0-9]{4}_[0-9]{2}_[0-9a-zNA]+$",
+#                    filenames1,
+#                    invert = TRUE,
+#                    value = TRUE)
+
+
+regex.test1 <- grep(paste0("BVerfG", # gericht
+                           "_",
+                           "[0-9]{4}-[0-9]{2}-[0-9]{2}", # datum
+                           "_",
+                           "[A-Z]", # spruchkoerper_typ 
+                           "_",
+                           "[0-9NA]+", # spruchkoerper_az
+                           "_",
+                           "[A-Za-z]+", # registerzeichen
+                           "_",
+                           "[0-9]{4}", # eingangsnummer
+                           "_",
+                           "[0-9]{2}", # eingangsjahr
+                           "_",
+                           "[0-9a-zNA]+$"), # kollision
                     filenames1,
                     invert = TRUE,
                     value = TRUE)
+
 
 
 #'### Ergebnis der ersten REGEX-Validierung
