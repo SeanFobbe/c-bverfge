@@ -18,6 +18,11 @@
 #' ---
 
 
+#+ echo = FALSE 
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = TRUE,
+                      message = TRUE)
+
 
 #'\newpage
 #+
