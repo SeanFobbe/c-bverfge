@@ -2103,7 +2103,7 @@ fwrite(dt.stats.docvars,
 #+
 #'### Diagramm: Verteilung Zeichen
 
-#+ C-BVerfGE_10_Density_Zeichen, fig.height = 6, fig.width = 9
+#+ CE-BVerfG_10_Density_Zeichen, fig.height = 6, fig.width = 9
 ggplot(data = meta.bverfg)+
     geom_density(aes(x = zeichen),
                  fill = "#ca2129")+
@@ -2113,13 +2113,9 @@ ggplot(data = meta.bverfg)+
     coord_cartesian(xlim = c(1, 10^6))+
     theme_bw()+
     labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
+        title = paste(prefix.figuretitle,
                       "| Verteilung der Zeichen je Dokument"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
+        caption = caption,
         x = "Zeichen",
         y = "Dichte"
     )+
@@ -2133,11 +2129,10 @@ ggplot(data = meta.bverfg)+
 
 
 
-
 #+
 #'### Diagramm: Verteilung Tokens
 
-#+ C-BVerfGE_11_Density_Tokens, fig.height = 6, fig.width = 9
+#+ CE-BVerfG_11_Density_Tokens, fig.height = 6, fig.width = 9
 ggplot(data = meta.bverfg)+
     geom_density(aes(x = tokens),
                  fill = "#ca2129")+
@@ -2147,13 +2142,9 @@ ggplot(data = meta.bverfg)+
     coord_cartesian(xlim = c(1, 10^6))+
     theme_bw()+
     labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
+        title = paste(prefix.figuretitle,
                       "| Verteilung der Tokens je Dokument"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
+        caption = caption,
         x = "Tokens",
         y = "Dichte"
     )+
@@ -2170,7 +2161,7 @@ ggplot(data = meta.bverfg)+
 #'\newpage
 #'### Diagramm: Verteilung Typen
 
-#+ C-BVerfGE_12_Density_Typen, fig.height = 6, fig.width = 9
+#+ CE-BVerfG_12_Density_Typen, fig.height = 6, fig.width = 9
 ggplot(data = meta.bverfg)+
     geom_density(aes(x = typen),
                  fill = "#ca2129")+
@@ -2180,13 +2171,9 @@ ggplot(data = meta.bverfg)+
     coord_cartesian(xlim = c(1, 10^6))+
     theme_bw()+
     labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
+        title = paste(prefix.figuretitle,
                       "| Verteilung der Typen je Dokument"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
+        caption = caption,
         x = "Typen",
         y = "Dichte"
     )+
@@ -2203,7 +2190,7 @@ ggplot(data = meta.bverfg)+
 #'\newpage
 #'### Diagramm: Verteilung Sätze
 
-#+ C-BVerfGE_13_Density_Saetze, fig.height = 6, fig.width = 9
+#+ CE-BVerfG_13_Density_Saetze, fig.height = 6, fig.width = 9
 ggplot(data = meta.bverfg)+
     geom_density(aes(x = saetze),
                  fill = "#ca2129")+
@@ -2213,13 +2200,9 @@ ggplot(data = meta.bverfg)+
     coord_cartesian(xlim = c(1, 10^6))+
     theme_bw()+
     labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
+        title = paste(prefix.figuretitle,
                       "| Verteilung der Sätze je Dokument"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
+        caption = caption,
         x = "Sätze",
         y = "Dichte"
     )+
