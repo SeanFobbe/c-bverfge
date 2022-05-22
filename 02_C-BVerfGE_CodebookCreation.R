@@ -34,6 +34,7 @@ knitr::opts_chunk$set(fig.pos = "center",
 
 #+
 
+library(RcppTOML)     # Verarbeitung von TOML-Format
 library(knitr)        # Professionelles Reporting
 library(kableExtra)   # Verbesserte Automatisierte Tabellen
 library(magick)       # Fortgeschrittene Verarbeitung von Grafiken
@@ -42,35 +43,37 @@ library(ggplot2)      # Fortgeschrittene Datenvisualisierung
 library(scales)       # Skalierung von Diagrammen
 library(data.table)   # Fortgeschrittene Datenverarbeitung
 
-setDTthreads(threads = detectCores())
-
-
-###################################
-### Zusätzliche Funktionen einlesen
-###################################
-
-source("General_Source_Functions.R")
-
+setDTthreads(threads = detectCores()) 
 
 
 ############################
 ### Vorbereitung
 ############################
 
-datasetname <- "C-BVerfGE"
-doi.concept <- "10.5281/zenodo.3831111" # checked
-doi.version <- "10.5281/zenodo.5514094" # checked
+## Konfiguration einlesen
+config <- parseTOML("CE-BVerfG_Config.toml")
 
 
-files.zip <- list.files(pattern = "\\.zip")
+## ZIP-Archive bestimmen
+files.zip <- list.files("output",
+                        pattern = "\\.zip")
 
+## Datumsstempel einlesen
 datestamp <- unique(tstrsplit(files.zip,
                               split = "_")[[2]])
 
 
-prefix <- paste0("ANALYSE/",
-                 datasetname,
+## Präfixe erstellen
+prefix.analysis <- paste0("analyse/",
+                 config$project$shortname,
                  "_")
+
+prefix.date <- file.path("output",
+                         paste0(config$project$shortname,
+                                "_",
+                                datestamp,
+                                "_"))
+
 
 
 
