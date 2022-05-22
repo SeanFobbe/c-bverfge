@@ -842,7 +842,6 @@ kable(stats.ling,
 #+
 #'# Inhalt des Korpus
 
-
 #+
 #'## Zusammenfassung
 
@@ -864,44 +863,14 @@ kable(stats.docvars,
 
 
 
+
 #'\vspace{1cm}
 
 #'## Nach Typ der Entscheidung
 
-freqtable <- table.entsch.typ[-.N]
-
 #'\vspace{0.5cm}
 
-#+ C-BVerfGE_02_Barplot_Entscheidung_Typ, fig.height = 6, fig.width = 9
-ggplot(data = freqtable) +
-    geom_bar(aes(x = reorder(entscheidung_typ,
-                             -N),
-                 y = N),
-             stat = "identity",
-             fill = "#ca2129",
-             color = "black",
-             width = 0.5) +
-    theme_bw() +
-    labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
-                      "| Entscheidungen je Entscheidungs-Typ"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
-        x = "Typ der Entscheidung",
-        y = "Entscheidungen"
-    )+
-    theme(
-        text = element_text(size = 14),
-        plot.title = element_text(size = 14,
-                                  face = "bold"),
-        legend.position = "none",
-        plot.margin = margin(10, 20, 10, 10)
-    )
-
-
+#' ![](analyse/CE-BVerfG_02_Barplot_Entscheidung_Typ-1.pdf)
 
 #'\vspace{1cm}
 
@@ -916,41 +885,13 @@ kable(table.entsch.typ,
                     "% Kumulativ"))
 
 
+
+
 #+
 #'## Nach Typ des Spruchkörpers
 
 
-freqtable <- table.spruch.typ[-.N]
-
-
-#+ C-BVerfGE_03_Barplot_Spruchkoerper_Typ, fig.height = 6, fig.width = 9
-ggplot(data = freqtable) +
-    geom_bar(aes(x = reorder(spruchkoerper_typ,
-                             -N),
-                 y = N),
-             stat = "identity",
-             fill = "#ca2129",
-             color = "black",
-             width = 0.4) +
-    theme_bw() +
-    labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
-                      "| Entscheidungen je Spruchkörper-Typ"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
-        x = "Typ des Spruchkörpers",
-        y = "Entscheidungen"
-    )+
-    theme(
-        text = element_text(size = 14),
-        plot.title = element_text(size = 14,
-                                  face = "bold"),
-        legend.position = "none",
-        plot.margin = margin(10, 20, 10, 10)
-    )
+#' ![](analyse/CE-BVerfG_03_Barplot_Spruchkoerper_Typ-1.pdf)
 
 
 #'\vspace{1cm}
@@ -975,37 +916,8 @@ kable(table.spruch.typ,
 
 
 #'\vspace{0.5cm}
-freqtable <- table.spruch.az[-.N]
 
-
-#+ C-BVerfGE_04_Barplot_Spruchkoerper_AZ, fig.height = 6, fig.width = 9
-ggplot(data = freqtable) +
-    geom_bar(aes(x = spruchkoerper_az,
-                 y = N),
-             stat = "identity",
-             fill = "#ca2129",
-             color = "black",
-             width = 0.4) +
-    theme_bw() +
-    labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
-                      "| Entscheidungen je Senat (Aktenzeichen)"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
-        x = "Senat",
-        y = "Entscheidungen"
-    )+
-    theme(
-        text = element_text(size = 14),
-        plot.title = element_text(size = 14,
-                                  face = "bold"),
-        legend.position = "none",
-        plot.margin = margin(10, 20, 10, 10)
-    )
-
+#' ![](analyse/CE-BVerfG_04_Barplot_Spruchkoerper_AZ-1.pdf)
 
 
 #'\vspace{1cm}
@@ -1022,41 +934,11 @@ kable(table.spruch.az,
 
 
 
-
-
 #'## Nach Registerzeichen
 
 #'\vspace{0.5cm}
-freqtable <- table.regz[-.N]
 
-#+ C-BVerfGE_05_Barplot_Registerzeichen, fig.height = 10, fig.width = 8
-ggplot(data = freqtable) +
-    geom_bar(aes(x = reorder(registerzeichen,
-                             N),
-                 y = N),
-             stat = "identity",
-             fill = "#ca2129",
-             color = "black") +
-    coord_flip()+
-    theme_bw() +
-    labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
-                      "| Entscheidungen je Registerzeichen"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
-        x = "Registerzeichen",
-        y = "Entscheidungen"
-    )+
-    theme(
-        text = element_text(size = 14),
-        plot.title = element_text(size = 14,
-                                  face = "bold"),
-        legend.position = "none",
-        plot.margin = margin(10, 20, 10, 10)
-    )
+#' ![](analyse/CE-BVerfG_05_Barplot_Registerzeichen-1.pdf)
 
 
 #'\newpage
@@ -1076,37 +958,9 @@ kable(table.regz,
 #'## Nach Präsident:in
 
 #'\vspace{0.5cm}
-freqtable <- table.output.praesi[-.N]
 
-#+ C-BVerfGE_06_Barplot_PraesidentIn, fig.height = 6, fig.width = 9
-ggplot(data = freqtable) +
-    geom_bar(aes(x = reorder(praesi,
-                             N),
-                 y = N),
-             stat = "identity",
-             fill = "#ca2129",
-             color = "black") +
-    coord_flip()+
-    theme_bw() +
-    labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
-                      "| Entscheidungen je Präsident:in"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
-        x = "Präsident:in",
-        y = "Entscheidungen"
-    )+
-    theme(
-        axis.title.y = element_blank(),
-        text = element_text(size = 14),
-        plot.title = element_text(size = 14,
-                                  face = "bold"),
-        legend.position = "none",
-        plot.margin = margin(10, 20, 10, 10)
-    )
+#' ![](analyse/CE-BVerfG_06_Barplot_PraesidentIn-1.pdf)
+
 
 #'\vspace{0.5cm}
 
@@ -1121,43 +975,14 @@ kable(table.output.praesi,
                     "% Kumulativ"))
 
 
+
+
 #'\newpage
 #'## Nach Vize-Präsident:in
 
 #'\vspace{0.5cm}
-freqtable <- table.output.vpraesi[-.N]
 
-
-#+ C-BVerfGE_07_Barplot_VizePraesidentIn, fig.height = 6, fig.width = 9
-ggplot(data = freqtable) +
-    geom_bar(aes(x = reorder(v_praesi,
-                             N),
-                 y = N),
-             stat = "identity",
-             fill = "#ca2129",
-             color = "black") +
-    coord_flip()+
-    theme_bw() +
-    labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
-                      "| Entscheidungen je Vize-Präsident:in"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
-        x = "Vize-Präsident:in",
-        y = "Entscheidungen"
-    )+
-    theme(
-        axis.title.y = element_blank(),
-        text = element_text(size = 14),
-        plot.title = element_text(size = 14,
-                                  face = "bold"),
-        legend.position = "none",
-        plot.margin = margin(10, 20, 10, 10)
-    )
-
+#' ![](analyse/CE-BVerfG_07_Barplot_VizePraesidentIn-1.pdf)
 
 #'\vspace{0.5cm}
 
@@ -1181,33 +1006,8 @@ kable(table.output.vpraesi,
 #'## Nach Entscheidungsjahr
 
 #'\vspace{0.5cm}
-freqtable <- table.jahr.entscheid[-.N][,lapply(.SD, as.numeric)]
 
-#+ C-BVerfGE_08_Barplot_Entscheidungsjahr, fig.height = 6, fig.width = 9
-ggplot(data = freqtable) +
-    geom_bar(aes(x = entscheidungsjahr,
-                 y = N),
-             stat = "identity",
-             fill ="#ca2129") +
-    theme_bw() +
-    labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
-                      "| Entscheidungen je Entscheidungsjahr"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
-        x = "Entscheidungsjahr",
-        y = "Entscheidungen"
-    )+
-    theme(
-        text = element_text(size = 16),
-        plot.title = element_text(size = 16,
-                                  face = "bold"),
-        legend.position = "none",
-        plot.margin = margin(10, 20, 10, 10)
-    )
+#' ![](analyse/CE-BVerfG_08_Barplot_Entscheidungsjahr-1.pdf)
 
 #'\vspace{1cm}
 
@@ -1224,6 +1024,7 @@ kable(table.jahr.entscheid,
 
 
 
+
 #'\newpage
 #+
 #'## Nach Eingangsjahr (ISO)
@@ -1231,43 +1032,15 @@ kable(table.jahr.entscheid,
 
 #'\vspace{0.5cm}
 
-
-freqtable <- table.jahr.eingangISO[-.N][,lapply(.SD, as.numeric)]
-
-
-#+ C-BVerfGE_09_Barplot_EingangsjahrISO, fig.height = 6, fig.width = 9
-ggplot(data = freqtable) +
-    geom_bar(aes(x = eingangsjahr_iso,
-                 y = N),
-             stat = "identity",
-             fill ="#ca2129") +
-    theme_bw() +
-    labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
-                      "| Entscheidungen je Eingangsjahr (ISO)"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
-        x = "Eingangsjahr (ISO)",
-        y = "Entscheidungen"
-    )+
-    theme(
-        text = element_text(size = 16),
-        plot.title = element_text(size = 16,
-                                  face = "bold"),
-        legend.position = "none",
-        plot.margin = margin(10, 20, 10, 10)
-    )
+#' ![](analyse/CE-BVerfG_09_Barplot_EingangsjahrISO-1.pdf)
 
 #'\vspace{1cm}
 
 kable(table.jahr.eingangISO,
       format = "latex",
       align = 'P{3cm}',
-      booktabs=TRUE,
-      longtable=TRUE,
+      booktabs = TRUE,
+      longtable = TRUE,
       col.names = c("Jahr",
                     "Entscheidungen",
                     "% Gesamt",
@@ -1281,22 +1054,23 @@ kable(table.jahr.eingangISO,
 #+
 #'## Verteilung PDF-Dateigrößen
 
-#' ![](ANALYSE/C-BVerfGE_14_Density_Dateigroessen_PDF-1.pdf)
+#' ![](analyse/CE-BVerfG_14_Density_Dateigroessen_PDF-1.pdf)
 
 
 #+
 #'## Verteilung TXT-Dateigrößen
 
-#' ![](ANALYSE/C-BVerfGE_15_Density_Dateigroessen_TXT-1.pdf)
+#' ![](analyse/CE-BVerfG_15_Density_Dateigroessen_TXT-1.pdf)
 
 #'\newpage
 
 #+
 #'## Gesamtgröße je ZIP-Archiv
 files.zip <- fread(hashfile)$filename
+files.zip <- file.path("output", files.zip)
 filesize <- round(file.size(files.zip) / 10^6, digits = 2)
 
-table.size <- data.table(files.zip,
+table.size <- data.table(basename(files.zip),
                          filesize)
 
 
@@ -1308,6 +1082,8 @@ kable(table.size,
       longtable = TRUE,
       col.names = c("Datei",
                     "Größe in MB"))
+
+
 
 
 
