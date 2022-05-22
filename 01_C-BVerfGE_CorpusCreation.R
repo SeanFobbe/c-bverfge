@@ -2223,22 +2223,41 @@ ggplot(data = meta.bverfg)+
 
 #'# Linguistische Annotationen berechnen
 
-if (mode.annotate == TRUE){
+#'## Funktion anzeigen: f.future_spacyparse
 
-    txt.annotated <- f.dopar.spacyparse(txt.bverfg,
-                                        threads = detectCores(),
-                                        chunksize = 1,
-                                        model = "de_core_news_sm",
-                                        pos = TRUE,
-                                        tag = TRUE,
-                                        lemma = TRUE,
-                                        entity = TRUE,
-                                        dependency = TRUE,
-                                        nounphrase = TRUE)
+print(f.future_spacyparse)
+
+#'## Berechnungen durchführen
+
+
+#+ annotate, results = 'hide', message = FALSE, warning = FALSE
+if (config$annotate$toggle == TRUE){
+
+    if(config$parallel$spacyparse == TRUE){
+
+        plan("multicore",
+             workers = fullCores)
+        
+    }else{
+
+        plan("sequential")
+
+    }
+
+
+
+    txt.annotated <- f.future_spacyparse(txt.bverfg,
+                                         chunksperworker = 1,
+                                         chunksize = NULL,
+                                         model = "de_core_news_sm",
+                                         pos = TRUE,
+                                         tag = TRUE,
+                                         lemma = TRUE,
+                                         entity = TRUE,
+                                         dependency = TRUE,
+                                         nounphrase = TRUE)
 
 }
-
-
 
 
 
