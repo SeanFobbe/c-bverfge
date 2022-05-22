@@ -471,23 +471,17 @@ df.bverfg <- readtext("*.txt",
 
 
 
-
 #+
 #'# Variablen (Allgemein)
 #'\label{mainvars}
 
-
 #+
 #'## Hinweise
-#'
-#' 
 
 #'\begin{itemize}
 #'\item Fehlende Werte sind immer mit \enquote{NA} codiert
 #'\item Strings können grundsätzlich alle in UTF-8 definierten Zeichen (insbesondere Buchstaben, Zahlen und Sonderzeichen) enthalten.
 #'\end{itemize}
-
-
 
 #+
 #'## Erläuterungen der einzelnen Variablen
@@ -500,6 +494,7 @@ df.bverfg <- readtext("*.txt",
 #'\toprule
 #' 
 #'Variable & Typ & Erläuterung\\
+#'
 #' 
 #'\midrule
 #'
@@ -514,6 +509,7 @@ df.bverfg <- readtext("*.txt",
 #' spruchkoerper\_typ & String & Der Typ des Spruchkörpers. Es sind die Werte \enquote{K} (Kammer), \enquote{S} (Senat), \enquote{P} (Plenum) und \enquote{B} (Beschwerdekammer gem. § 97c BVerfGG) vergeben.\\
 #' spruchkoerper\_az & Natürliche Zahl & Der im Aktenzeichen angegebene Spruchkörper. Es sind nur die Werte \enquote{1} und \enquote{2} vergeben. Die Werte stehen für den 1. oder 2. Senat des Gerichts. Für Verzögerungsentscheidungen der Beschwerdekammer ist der Wert \enquote{NA}. \textbf{Achtung:} Um die Entscheidungen eines bestimmten Senats zu analysieren reicht es nicht, die Variable \enquote{spruchkoerper\_az} zu nutzen, es muss zusätzlich noch die Variable \enquote{spruchkoerper\_typ} auf \enquote{S} gesetzt werden, weil ansonsten noch mit dem Senat assoziierte Entscheidungen seiner Kammern und des Plenums mit ausgewählt werden. \\
 #' registerzeichen & String & Das amtliche Registerzeichen. Es gibt die Verfahrensart an, in der die Entscheidung ergangen ist. Eine Erläuterung der Registerzeichen findet sich unter Punkt \ref{register}.\\
+#' verfahrensart & String &  Die ausführliche Beschreibung der Verfahrensart, die dem Registerzeichen zugeordnet ist.  Eine Erläuterung der Registerzeichen und der zugehörigen Verfahrensarten findet sich unter Punkt \ref{register}.\\
 #' eingangsnummer & Natürliche Zahl & Verfahren des gleichen Eingangsjahres erhalten vom Gericht eine Nummer in der Reihenfolge ihres Eingangs. Die Zahl ist in den Dateinamen mit führenden Nullen (falls <1000) codiert.\\
 #' eingangsjahr\_az & Natürliche Zahl & Das im Aktenzeichen angegebene Jahr in dem das Verfahren beim Gericht anhängig wurde. Das Format ist eine zweistellige Jahreszahl (YY).\\
 #' eingangsjahr\_iso & Natürliche Zahl &  (Nur CSV-Datei) Das nach ISO-8601 codierte Jahr in dem das Verfahren beim Bundesverfassungsgericht anhängig wurde. Das Format ist eine vierstellige Jahreszahl (YYYY), um eine maschinenlesbare und eindeutige Jahreszahl für den Eingang zur Verfügung zu stellen. Wurde aus der Variable \enquote{eingangsjahr\_az} durch den Autor des Datensatzes berechnet, unter der Annahme, dass Jahreszahlen über 50 dem 20. Jahrhundert zugeordnet sind und andere Jahreszahlen dem 21. Jahrhundert.\\
@@ -525,9 +521,9 @@ df.bverfg <- readtext("*.txt",
 #' aktenzeichen & String & (Nur CSV-Datei) Das amtliche Aktenzeichen. Die Variable wurde aus den Variablen \enquote{spruchkoerper\_az}, \enquote{registerzeichen}, \enquote{eingangsnummer} und \enquote{eingangsjahr\_az} durch den Autor des Datensatzes berechnet. Im Falle mehrere verbundener Verfahren mit einer einheitlichen Entscheidung ist dies das Aktenzeichen des Pilotverfahrens.\\
 #' aktenzeichen\_alle & String & (Nur CSV-Datei) Alle Aktenzeichen der von der Entscheidung betroffenen Verfahren, falls es sich um verbunden Verfahren mit einheitlicher Entscheidung handelt. Ansonsten ist der Wert dieser Variable identisch mit der Variable \enquote{aktenzeichen}.\\ 
 #' ecli & String & (Nur CSV-Datei) Der European Case Law Identifier (ECLI) der Entscheidung. Jeder Entscheidung ist eine einzigartige ECLI zugewiesen, ggf. mit Kollisisions-ID. Die ECLI ist vor allem dann hilfreich, wenn dieser Datensatz mit anderen Datensätzen zusammengeführt werden und Dopplungen vermieden werden sollen. Alle inhaltlichen Bestandteile der ECLI sind in diesem Datensatz zusätzlich auch anderen und besser verständlichen Variablen zugewiesen. Nutzen Sie bevorzugt diese anderen Variablen, statt Informationen aus der ECLI zu extrahieren. Die Variable wurde aus den Variablen \enquote{entscheidungsjahr}, \enquote{spruchkoerper\_typ}, \enquote{datum}, \enquote{kollision}, \enquote{spruchkoerper\_az}, \enquote{registerzeichen},  \enquote{eingangsnummer} und \enquote{eingangsjahr\_az} durch den Autor des Datensatzes berechnet.\\
-#' zitiervorschlag & String & (Nur CSV-Datei) Der vom BVerfG vorgegebene Zitiervorschlag.\\
-#' kurzbeschreibung & String & (Nur CSV-Datei) Kurzbeschreibung des Inhalts des Verfahrens wie auf der Website des BVerfG angegeben.\\
-#' pressemitteilung & String & (Nur CSV-Datei) Nummer und Datum der zugehörigen Pressemitteilung, falls vorhanden. Ansonsten \enquote{NA}.\\
+#' zitiervorschlag & String &  (Nur CSV-Datei) Der vom BVerfG vorgegebene Zitiervorschlag.\\
+#' kurzbeschreibung & String &  (Nur CSV-Datei) Kurzbeschreibung des Inhalts des Verfahrens wie auf der Website des BVerfG angegeben.\\
+#' pressemitteilung & String &  (Nur CSV-Datei) Nummer und Datum der zugehörigen Pressemitteilung, falls vorhanden. Ansonsten \enquote{NA}.\\
 #' praesi & String & (Nur CSV-Datei) Der Nachname des oder der Präsident:in in dessen/deren Amtszeit das Datum der Entscheidung fällt.\\
 #' v\_praesi & String & (Nur CSV-Datei) Der Nachname des oder der Vize-Präsident:in in dessen/deren Amtszeit das Datum der Entscheidung fällt.\\
 #' richter & String & (Nur CSV-Datei) Die Nachnamen der Richter:innen, die die Entscheidung unterschrieben haben. Ggf. mit Angabe falls die Person verhindert war. Die einzelnen Namen sind jeweils durch vertikale Striche (\enquote{|}) voneinander getrennt.\\
@@ -535,7 +531,7 @@ df.bverfg <- readtext("*.txt",
 #' tokens & Natürliche Zahl & (Nur CSV-Datei) Die Anzahl Tokens (beliebige Zeichenfolge getrennt durch whitespace) eines Dokumentes. Diese Zahl kann je nach Tokenizer und verwendeten Einstellungen erheblich schwanken. Für diese Berechnung wurde eine reine Tokenisierung ohne Entfernung von Inhalten durchgeführt. Benutzen Sie diesen Wert eher als Anhaltspunkt für die Größenordnung denn als exakte Aussage und führen sie ggf. mit ihrer eigenen Software eine Kontroll-Rechnung durch.\\
 #' typen & Natürliche Zahl & (Nur CSV-Datei) Die Anzahl \emph{einzigartiger} Tokens (beliebige Zeichenfolge getrennt durch whitespace) eines Dokumentes. Diese Zahl kann je nach Tokenizer und verwendeten Einstellungen erheblich schwanken. Für diese Berechnung wurde eine reine Tokenisierung und Typenzählung ohne Entfernung von Inhalten durchgeführt. Benutzen Sie diesen Wert eher als Anhaltspunkt für die Größenordnung denn als exakte Aussage und führen sie ggf. mit ihrer eigenen Software eine Kontroll-Rechnung durch.\\
 #' saetze & Natürliche Zahl & (Nur CSV-Datei) Die Anzahl Sätze. Die Definition entspricht in etwa dem üblichen Verständnis eines Satzes. Die Regeln für die Bestimmung von Satzanfang und Satzende sind im Detail allerdings sehr komplex und in \enquote{Unicode Standard Annex No 29} beschrieben. Diese Zahl kann je nach Software und verwendeten Einstellungen erheblich schwanken. Für diese Berechnung wurde eine reine Zählung ohne Entfernung von Inhalten durchgeführt. Benutzen Sie diesen Wert eher als Anhaltspunkt für die Größenordnung denn als exakte Aussage und führen sie ggf. mit ihrer eigenen Software eine Kontroll-Rechnung durch.\\
-#' version & Datum & (Nur CSV-Datei) Die Versionsnummer des Datensatzes im Format YYYY-MM-DD (Langform nach ISO-8601). Die Versionsnummer entspricht immer dem Datum an dem der Datensatz erstellt und die Daten von der Webseite des Gerichts abgerufen wurden.\\
+#' version & Datum (ISO) & (Nur CSV-Datei) Die Versionsnummer des Datensatzes im Format YYYY-MM-DD (Langform nach ISO-8601). Die Versionsnummer entspricht immer dem Datum an dem der Datensatz erstellt und die Daten von der Webseite des Gerichts abgerufen wurden.\\
 #' doi\_concept & String & (Nur CSV-Datei) Der Digital Object Identifier (DOI) des Gesamtkonzeptes des Datensatzes. Dieser ist langzeit-stabil (persistent). Über diese DOI kann via www.doi.org immer die \textbf{aktuellste Version} des Datensatzes abgerufen werden. Prinzip F1 der FAIR-Data Prinzipien (\enquote{data are assigned globally unique and persistent identifiers}) empfiehlt die Dokumentation jeder Messung mit einem persistenten Identifikator. Selbst wenn die CSV-Dateien ohne Kontext weitergegeben werden kann ihre Herkunft so immer zweifelsfrei und maschinenlesbar bestimmt werden.\\
 #' doi\_version & String & (Nur CSV-Datei) Der Digital Object Identifier (DOI) der \textbf{konkreten Version} des Datensatzes. Dieser ist langzeit-stabil (persistent). Über diese DOI kann via www.doi.org immer diese konkrete Version des Datensatzes abgerufen werden. Prinzip F1 der FAIR-Data Prinzipien (\enquote{data are assigned globally unique and persistent identifiers}) empfiehlt die Dokumentation jeder Messung mit einem persistenten Identifikator. Selbst wenn die CSV-Dateien ohne Kontext weitergegeben werden kann ihre Herkunft so immer zweifelsfrei und maschinenlesbar bestimmt werden.\\
 #' lizenz & String & Die Lizenz für den Gesamtdatensatz. In diesem Datensatz immer \enquote{Creative Commons Zero 1.0 Universal}.\\
@@ -544,8 +540,6 @@ df.bverfg <- readtext("*.txt",
 #' 
 #'\end{longtable}
 #'\end{centering}
-
-
 
 #'\newpage
 #+
