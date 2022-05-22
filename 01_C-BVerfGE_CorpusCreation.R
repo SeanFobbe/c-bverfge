@@ -1310,13 +1310,13 @@ txt.bverfg$aktenzeichen <- gsub("NA ",
 
 #'## Variable "doi_concept" hinzufügen
 
-txt.bverfg$doi_concept <- rep(doi.concept,
+txt.bverfg$doi_concept <- rep(config$doi$data$concept,
                               txt.bverfg[,.N])
 
 
 #'## Variable "doi_version" hinzufügen
 
-txt.bverfg$doi_version <- rep(doi.version,
+txt.bverfg$doi_version <- rep(config$doi$data$version,
                               txt.bverfg[,.N])
 
 
@@ -1327,7 +1327,7 @@ txt.bverfg$version <- as.character(rep(datestamp,
 
 
 #'## Variable "lizenz" hinzufügen
-txt.bverfg$lizenz <- as.character(rep(license,
+txt.bverfg$lizenz <- as.character(rep(config$license$data,
                                    txt.bverfg[,.N]))
 
 
