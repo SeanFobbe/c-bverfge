@@ -1087,7 +1087,6 @@ kable(table.size,
 
 
 
-
 #'\newpage
 #+
 #'# Signaturprüfung
@@ -1113,7 +1112,7 @@ kable(table.size,
 #+
 #'## Import: Public Key
 #+ echo = TRUE
-system2("gpg2", "--import GPG-Public-Key_Fobbe-Data.asc",
+system2("gpg2", "--import gpg/PublicKey_Fobbe-Data.asc",
         stdout = TRUE,
         stderr = TRUE)
 
@@ -1128,6 +1127,7 @@ system2("gpg2", "--import GPG-Public-Key_Fobbe-Data.asc",
 
 # CSV-Datei mit Hashes
 print(hashfile)
+
 # GPG-Signatur
 print(signaturefile)
 
@@ -1165,14 +1165,14 @@ sha3test <- function(filename, sig){
 
 # Ursprüngliche Signaturen importieren
 table.hashes <- fread(hashfile)
-filename <- table.hashes$filename
+filename <- file.path("output", table.hashes$filename)
 sha3.512 <- table.hashes$sha3.512
 
 # Signaturprüfung durchführen 
 sha3.512.result <- mcmapply(sha3test, filename, sha3.512, USE.NAMES = FALSE)
 
 # Ergebnis anzeigen
-testresult <- data.table(filename, sha3.512.result)
+testresult <- data.table(basename(filename), sha3.512.result)
 
 #+ echo = TRUE
 kable(testresult, format = "latex", booktabs = TRUE,
@@ -1180,58 +1180,13 @@ kable(testresult, format = "latex", booktabs = TRUE,
 
 
 
-#+
-#'# Changelog
-#'
-#'## Version \version
-#'
-#' \begin{itemize}
-#' \item Vollständige Aktualisierung der Daten
-#' \item Neue Variablen: Lizenz, Typ der Entscheidung, Zeichenzahl, Pressemitteilung, Zitiervorschlag, Aktenzeichen (alle), Verfahrensart, Kurzbeschreibung und Richter
-#' \item Neue Variante: Linguistischen Annotationen
-#' \item Neue Variante: Segmentiert
-#' \item Neue Variante: HTML
-#' \item Erweiterung der Codebook-Dokumentation
-#' \item Strenge Kontrolle und semantische Sortierung der Variablen-Namen
-#' \item Abgleich der selbst berechneten ECLI mit der in der HTML-Fassung dokumentierten ECLI
-#' \item Variable für Entscheidungstyp wird nun aus dem Zitiervorschlag berechnet um eine höhere Genaugikeit zu gewährleisten
-#' \end{itemize}
-#'
-#' 
-#'## Version 2021-01-03 
-#'
-#' \begin{itemize}
-#' \item Vollständige Aktualisierung der Daten
-#' \item Veröffentlichung des vollständigen Source Codes
-#' \item Deutliche Erweiterung des inhaltlichen Umfangs des Codebooks
-#' \item Einführung der vollautomatischen Erstellung von Datensatz und Codebook
-#' \item Einführung von Compilation Reports um den Erstellungsprozess exakt zu dokumentieren
-#' \item Einführung von Variablen für Versionsnummer, Concept DOI, Version DOI, ECLI, Entscheidungsnamen, BVerfGE-Band, BVerfGE-Seite, Typ des Spruchkörpers, PräsidentIn, Vize-PräsidentIn und linguistische Kennzahlen (Tokens, Typen, Sätze)
-#' \item Automatisierung und Erweiterung der Qualitätskontrolle
-#' \item Einführung von Diagrammen zur Visualisierung von Prüfergebnissen
-#' \item Einführung kryptographischer Signaturen
-#' \item Alle Variablen sind nun in Kleinschreibung und Snake Case gehalten
-#' \item Variable \enquote{Suffix} in \enquote{kollision} umbenannt.
-#' \item Variable \enquote{Ordinalzahl} in \enquote{eingangsnummer} umbenannt.
-#' \item Umstellung auf Stichtags-Versionierung
-#' \end{itemize}
-#' 
-#'## Version 1.1.0 
-#'
-#' \begin{itemize}
-#' \item Vollständige Aktualisierung der Daten
-#' \item Angleichung der Variablen-Namen an andere Datensätze der CE-Serie\footnote{Siehe: \url{https://zenodo.org/communities/sean-fobbe-data/}}
-#' \item Einführung der Variable \enquote{Suffix} um weitere Entscheidungen korrekt erfassen zu können; aufgrund der fehlenden Berücksichtigung des Suffix wurden einige wenige Entscheidungen in Version 1.0.0 irrtümlich von der Sammlung ausgeschlossen.
-#' \item Stichtag: 2020-08-09
-#' \end{itemize}
-#' 
-#'## Version 1.0.0
-#'
-#' \begin{itemize}
-#' \item Erstveröffentlichung
-#' \item Stichtag: 2020-05-16
-#' \end{itemize}
-#' 
+
+
+#+ results = "asis"
+cat(readLines("CHANGELOG.md"),
+    sep = "\n")
+
+
 
 #'\newpage
 #+
