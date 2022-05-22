@@ -77,8 +77,6 @@ prefix.date <- file.path("output",
 
 
 
-
-
 ############################
 ### Registerzeichen
 ############################
@@ -88,14 +86,14 @@ prefix.date <- file.path("output",
 
 ## Datensatz herunterladen
 
-if (file.exists("AZ-BRD_1-0-1_DE_Registerzeichen_Datensatz.csv") == FALSE){
+if (file.exists("data/AZ-BRD_1-0-1_DE_Registerzeichen_Datensatz.csv") == FALSE){
     download.file("https://zenodo.org/record/4569564/files/AZ-BRD_1-0-1_DE_Registerzeichen_Datensatz.csv?download=1",
- "AZ-BRD_1-0-1_DE_Registerzeichen_Datensatz.csv")
+ "data/AZ-BRD_1-0-1_DE_Registerzeichen_Datensatz.csv")
     }
 
 
 ## Datensatz einlesen
-az.source <- fread("AZ-BRD_1-0-1_DE_Registerzeichen_Datensatz.csv")
+az.source <- fread("data/AZ-BRD_1-0-1_DE_Registerzeichen_Datensatz.csv")
 
 ## Datensatz auf relevante Daten reduzieren
 table.registerzeichen <- az.source[stelle == "BVerfG" & position == "hauptzeichen"]
@@ -107,35 +105,35 @@ table.registerzeichen <- az.source[stelle == "BVerfG" & position == "hauptzeiche
 ################################
 
 
-table.entsch.typ <- fread(paste0(prefix,
+table.entsch.typ <- fread(paste0(prefix.analysis,
                                  "01_Frequenztabelle_var-entscheidung_typ.csv"),
                           drop = 3)
 
-table.spruch.typ <- fread(paste0(prefix,
+table.spruch.typ <- fread(paste0(prefix.analysis,
                                  "01_Frequenztabelle_var-spruchkoerper_typ.csv"),
                           drop = 3)
 
-table.spruch.az <- fread(paste0(prefix,
+table.spruch.az <- fread(paste0(prefix.analysis,
                                 "01_Frequenztabelle_var-spruchkoerper_az.csv"),
                          drop = 3)
 
-table.regz <- fread(paste0(prefix,
+table.regz <- fread(paste0(prefix.analysis,
                            "01_Frequenztabelle_var-registerzeichen.csv"),
                     drop = 3)
 
-table.jahr.eingangISO <- fread(paste0(prefix,
+table.jahr.eingangISO <- fread(paste0(prefix.analysis,
                                       "01_Frequenztabelle_var-eingangsjahr_iso.csv"),
                                drop = 3)
 
-table.jahr.entscheid <- fread(paste0(prefix,
+table.jahr.entscheid <- fread(paste0(prefix.analysis,
                                      "01_Frequenztabelle_var-entscheidungsjahr.csv"),
                               drop = 3)
 
-table.output.praesi <- fread(paste0(prefix,
+table.output.praesi <- fread(paste0(prefix.analysis,
                                     "01_Frequenztabelle_var-praesi.csv"),
                              drop = 3)
 
-table.output.vpraesi <- fread(paste0(prefix,
+table.output.vpraesi <- fread(paste0(prefix.analysis,
                                      "01_Frequenztabelle_var-v_praesi.csv"),
                               drop = 3)
 
@@ -149,16 +147,16 @@ table.output.vpraesi <- fread(paste0(prefix,
 #+
 ## Personaldaten herunterladen
 
-if (file.exists("PVP-FCG_2021-04-08_GermanFederalCourts_Presidents.csv") == FALSE){
+if (file.exists("data/PVP-FCG_2021-04-08_GermanFederalCourts_Presidents.csv") == FALSE){
     download.file("https://zenodo.org/record/4568682/files/PVP-FCG_2021-04-08_GermanFederalCourts_Presidents.csv?download=1",
- "PVP-FCG_2021-04-08_GermanFederalCourts_Presidents.csv")
+ "data/PVP-FCG_2021-04-08_GermanFederalCourts_Presidents.csv")
     }
 
 
 #+
 ## Personaldaten einlesen
 
-table.praesi <- fread("PVP-FCG_2021-04-08_GermanFederalCourts_Presidents.csv")
+table.praesi <- fread("data/PVP-FCG_2021-04-08_GermanFederalCourts_Presidents.csv")
 
 table.praesi.daten <- table.praesi[court == "BVerfG", c(2:3, 5:8)]
 table.praesi.alter <- table.praesi[court == "BVerfG", c(2:3, 13:15)]
@@ -167,9 +165,9 @@ table.praesi.alter <- table.praesi[court == "BVerfG", c(2:3, 13:15)]
 #+
 ## Personaldaten herunterladen
 
-if (file.exists("PVP-FCG_2021-04-08_GermanFederalCourts_VicePresidents.csv") == FALSE){
+if (file.exists("data/PVP-FCG_2021-04-08_GermanFederalCourts_VicePresidents.csv") == FALSE){
     download.file("https://zenodo.org/record/4568682/files/PVP-FCG_2021-04-08_GermanFederalCourts_VicePresidents.csv?download=1",
- "PVP-FCG_2021-04-08_GermanFederalCourts_VicePresidents.csv")
+ "data/PVP-FCG_2021-04-08_GermanFederalCourts_VicePresidents.csv")
     }
 
 
@@ -177,7 +175,7 @@ if (file.exists("PVP-FCG_2021-04-08_GermanFederalCourts_VicePresidents.csv") == 
 #+
 ## Personaldaten einlesen
 
-table.vpraesi <- fread("PVP-FCG_2021-04-08_GermanFederalCourts_VicePresidents.csv")
+table.vpraesi <- fread("data/PVP-FCG_2021-04-08_GermanFederalCourts_VicePresidents.csv")
 
 table.vpraesi.daten <- table.vpraesi[court == "BVerfG", c(2:3, 5:8)]
 table.vpraesi.alter <- table.vpraesi[court == "BVerfG", c(2:3, 13:15)]
@@ -190,10 +188,10 @@ table.vpraesi.alter <- table.vpraesi[court == "BVerfG", c(2:3, 13:15)]
 ######################################
 
 
-stats.ling <-  fread(paste0(prefix,
+stats.ling <-  fread(paste0(prefix.analysis,
                             "00_KorpusStatistik_ZusammenfassungLinguistisch.csv"))
 
-stats.docvars <- fread(paste0(prefix,
+stats.docvars <- fread(paste0(prefix.analysis,
                               "00_KorpusStatistik_ZusammenfassungDocvarsQuantitativ.csv"))
 
 
@@ -203,37 +201,36 @@ stats.docvars <- fread(paste0(prefix,
 ### Einlesen: Datensatz
 ######################################
 
-summary.zip <- paste(datasetname,
-                     datestamp,
-                     "DE_CSV_Metadaten.zip",
-                     sep = "_")
+### Metadaten
+summary.zip <- paste0(prefix.date,
+                      "DE_CSV_Metadaten.zip")
 
 summary.corpus <- fread(cmd = paste("unzip -cq",
                                     summary.zip))
 
 
-
-data.zip <- paste(datasetname,
-                     datestamp,
-                     "DE_CSV_Datensatz.zip",
-                     sep = "_")
+### Datensatz
+data.zip <- paste0(prefix.date,
+                      "DE_CSV_Datensatz.zip")
 
 data.corpus <- fread(cmd = paste("unzip -cq",
                                  data.zip))
 
-
+### Annotationen
 # Hinweis: Direktes einlesen aus ZIP-Datei führt zu segfault. Grund unbekannt.
 
-annotated.zip <- paste(datasetname,
-                     datestamp,
-                     "DE_CSV_Annotiert.zip",
-                     sep = "_")
+annotated.zip <- paste(config$project$shortname,
+                       datestamp,
+                       "DE_CSV_Annotiert.zip",
+                       sep = "_")
 
 annotated.csv <- gsub("\\.zip",
                       "\\.csv",
                       annotated.zip)
 
-unzip(annotated.zip)
+unzip(file.path("output",
+                annotated.zip),
+      exdir = ".")
 
 annotated.corpus <- fread(annotated.csv)
 
@@ -242,16 +239,14 @@ unlink(annotated.csv)
 
 
 ################################
-### Einlesen: Signaturen
+### Signaturen bestimmen
 ################################
 
-hashfile <- paste(datasetname,
-                  datestamp,
-                  "KryptographischeHashes.csv", sep = "_")
+hashfile <- paste0(prefix.date,
+                  "KryptographischeHashes.csv")
 
-signaturefile <- paste(datasetname,
-                       datestamp,
-                       "FobbeSignaturGPG_Hashes.gpg", sep = "_")
+signaturefile <- paste0(prefix.date,
+                        "FobbeSignaturGPG_Hashes.gpg")
 
 
 
