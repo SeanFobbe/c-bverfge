@@ -1626,7 +1626,7 @@ table.output.vpraesi <- fread(paste0(prefix,
 freqtable <- table.entsch.typ[-.N]
 
 
-#+ CE-BVerfG_02_Barplot_Entscheidung_Typ, fig.height = 6, fig.width = 9
+#+ C-BVerfGE_02_Barplot_Entscheidung_Typ, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = reorder(entscheidung_typ,
                              -N),
@@ -1663,7 +1663,7 @@ ggplot(data = freqtable) +
 freqtable <- table.spruch.typ[-.N]
 
 
-#+ CE-BVerfG_03_Barplot_Spruchkoerper_Typ, fig.height = 6, fig.width = 9
+#+ C-BVerfGE_03_Barplot_Spruchkoerper_Typ, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = reorder(spruchkoerper_typ,
                              -N),
@@ -1697,7 +1697,7 @@ ggplot(data = freqtable) +
 freqtable <- table.spruch.az[-.N]
 
 
-#+ CE-BVerfG_04_Barplot_Spruchkoerper_AZ, fig.height = 6, fig.width = 9
+#+ C-BVerfGE_04_Barplot_Spruchkoerper_AZ, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = spruchkoerper_az,
                  y = N),
@@ -1728,7 +1728,7 @@ ggplot(data = freqtable) +
 
 freqtable <- table.regz[-.N]
 
-#+ CE-BVerfG_05_Barplot_Registerzeichen, fig.height = 10, fig.width = 8
+#+ C-BVerfGE_05_Barplot_Registerzeichen, fig.height = 10, fig.width = 8
 ggplot(data = freqtable) +
     geom_bar(aes(x = reorder(registerzeichen,
                              N),
@@ -1760,7 +1760,7 @@ ggplot(data = freqtable) +
 
 freqtable <- table.output.praesi[-.N]
 
-#+ CE-BVerfG_06_Barplot_PraesidentIn, fig.height = 6, fig.width = 9
+#+ C-BVerfGE_06_Barplot_PraesidentIn, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = reorder(praesi,
                              N),
@@ -1793,7 +1793,7 @@ ggplot(data = freqtable) +
 
 freqtable <- table.output.vpraesi[-.N]
 
-#+ CE-BVerfG_07_Barplot_VizePraesidentIn, fig.height = 6, fig.width = 9
+#+ C-BVerfGE_07_Barplot_VizePraesidentIn, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = reorder(v_praesi,
                              N),
@@ -1826,7 +1826,7 @@ ggplot(data = freqtable) +
 
 freqtable <- table.jahr.entscheid[-.N][,lapply(.SD, as.numeric)]
 
-#+ CE-BVerfG_08_Barplot_Entscheidungsjahr, fig.height = 6, fig.width = 9
+#+ C-BVerfGE_08_Barplot_Entscheidungsjahr, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = entscheidungsjahr,
                  y = N),
@@ -1857,7 +1857,7 @@ freqtable <- table.jahr.eingangISO[-.N][,lapply(.SD, as.numeric)]
 
 
 
-#+ CE-BVerfG_09_Barplot_EingangsjahrISO, fig.height = 6, fig.width = 9
+#+ C-BVerfGE_09_Barplot_EingangsjahrISO, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = eingangsjahr_iso,
                  y = N),
@@ -2103,7 +2103,7 @@ fwrite(dt.stats.docvars,
 #+
 #'### Diagramm: Verteilung Zeichen
 
-#+ CE-BVerfG_10_Density_Zeichen, fig.height = 6, fig.width = 9
+#+ C-BVerfGE_10_Density_Zeichen, fig.height = 6, fig.width = 9
 ggplot(data = meta.bverfg)+
     geom_density(aes(x = zeichen),
                  fill = "#ca2129")+
@@ -2132,7 +2132,7 @@ ggplot(data = meta.bverfg)+
 #+
 #'### Diagramm: Verteilung Tokens
 
-#+ CE-BVerfG_11_Density_Tokens, fig.height = 6, fig.width = 9
+#+ C-BVerfGE_11_Density_Tokens, fig.height = 6, fig.width = 9
 ggplot(data = meta.bverfg)+
     geom_density(aes(x = tokens),
                  fill = "#ca2129")+
@@ -2161,7 +2161,7 @@ ggplot(data = meta.bverfg)+
 #'\newpage
 #'### Diagramm: Verteilung Typen
 
-#+ CE-BVerfG_12_Density_Typen, fig.height = 6, fig.width = 9
+#+ C-BVerfGE_12_Density_Typen, fig.height = 6, fig.width = 9
 ggplot(data = meta.bverfg)+
     geom_density(aes(x = typen),
                  fill = "#ca2129")+
@@ -2190,7 +2190,7 @@ ggplot(data = meta.bverfg)+
 #'\newpage
 #'### Diagramm: Verteilung Sätze
 
-#+ CE-BVerfG_13_Density_Saetze, fig.height = 6, fig.width = 9
+#+ C-BVerfGE_13_Density_Saetze, fig.height = 6, fig.width = 9
 ggplot(data = meta.bverfg)+
     geom_density(aes(x = saetze),
                  fill = "#ca2129")+
@@ -2520,7 +2520,7 @@ sum(txt.MB)
 
 dt.plot <- data.table(pdf.MB)
 
-#+ CE-BVerfG_14_Density_Dateigroessen_PDF, fig.height = 6, fig.width = 9
+#+ C-BVerfGE_14_Density_Dateigroessen_PDF, fig.height = 6, fig.width = 9
 ggplot(data = dt.plot,
        aes(x = pdf.MB)) +
     geom_density(fill = "#ca2129") +
@@ -2550,7 +2550,7 @@ ggplot(data = dt.plot,
 
 dt.plot <- data.table(txt.MB)
 
-#+ CE-BVerfG_15_Density_Dateigroessen_TXT, fig.height = 6, fig.width = 9
+#+ C-BVerfGE_15_Density_Dateigroessen_TXT, fig.height = 6, fig.width = 9
 ggplot(data = dt.plot,
        aes(x = txt.MB)) +
     geom_density(fill = "#ca2129") +
