@@ -2472,7 +2472,7 @@ if (config$annotate$toggle == TRUE){
 #+
 #'## Gesamtgröße
 
-#'### Objekt in RAM (MB)
+#'### Korpus-Objekt in RAM (MB)
 
 print(object.size(txt.bverfg),
       standard = "SI",
@@ -2502,7 +2502,9 @@ pdf.MB <- file.size(files.pdf) / 10^6
 sum(pdf.MB)
 
 
+
 #'### TXT-Dateien (MB)
+
 files.txt <- list.files(pattern = "\\.txt$",
                         ignore.case = TRUE)
 
@@ -2512,12 +2514,13 @@ sum(txt.MB)
 
 
 
+
 #'\newpage
 #'## Diagramm: Verteilung der Dateigrößen (PDF)
 
 dt.plot <- data.table(pdf.MB)
 
-#+ C-BVerfGE_14_Density_Dateigroessen_PDF, fig.height = 6, fig.width = 9
+#+ CE-BVerfG_14_Density_Dateigroessen_PDF, fig.height = 6, fig.width = 9
 ggplot(data = dt.plot,
        aes(x = pdf.MB)) +
     geom_density(fill = "#ca2129") +
@@ -2526,13 +2529,9 @@ ggplot(data = dt.plot,
     annotation_logticks(sides = "b")+
     theme_bw() +
     labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
+        title = paste(prefix.figuretitle,
                       "| Verteilung der Dateigrößen (PDF)"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
+        caption = caption,
         x = "Dateigröße in MB",
         y = "Dichte"
     )+
@@ -2546,14 +2545,12 @@ ggplot(data = dt.plot,
     )
 
 
-
-
 #'\newpage
 #'## Diagramm: Verteilung der Dateigrößen (TXT)
 
 dt.plot <- data.table(txt.MB)
 
-#+ C-BVerfGE_15_Density_Dateigroessen_TXT, fig.height = 6, fig.width = 9
+#+ CE-BVerfG_15_Density_Dateigroessen_TXT, fig.height = 6, fig.width = 9
 ggplot(data = dt.plot,
        aes(x = txt.MB)) +
     geom_density(fill = "#ca2129") +
@@ -2562,13 +2559,9 @@ ggplot(data = dt.plot,
     annotation_logticks(sides = "b")+
     theme_bw() +
     labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
+        title = paste(prefix.figuretitle,
                       "| Verteilung der Dateigrößen (TXT)"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
+        caption = caption,
         x = "Dateigröße in MB",
         y = "Dichte"
     )+
@@ -2580,7 +2573,6 @@ ggplot(data = dt.plot,
         panel.spacing = unit(0.1, "lines"),
         plot.margin = margin(10, 20, 10, 10)
     )
-
 
 
 
