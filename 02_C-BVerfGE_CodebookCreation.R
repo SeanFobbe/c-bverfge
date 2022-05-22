@@ -749,6 +749,7 @@ kable(table.vpraesi.alter[grep("VACANCY", table.vpraesi.daten$name_last, invert 
 
 
 
+
 #'\newpage
 #+
 #'# Linguistische Kennzahlen
@@ -787,7 +788,7 @@ kable(table.vpraesi.alter[grep("VACANCY", table.vpraesi.daten$name_last, invert 
 
 #'## Werte der Kennzahlen
 
-setnames(stats.ling, c("Variable",
+setnames(stats.ling, c("Kennzahl",
                        "Summe",
                        "Min",
                        "Quart1",
@@ -804,130 +805,33 @@ kable(stats.ling,
       longtable = TRUE)
 
 
-
 #+
 #'## Verteilung Zeichen
 
-#+ C-BVerfGE_10_Density_Zeichen, fig.height = 6, fig.width = 9
-ggplot(data = summary.corpus)+
-    geom_density(aes(x = zeichen),
-                 fill = "#ca2129")+
-    scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
-                  labels = trans_format("log10", math_format(10^.x)))+
-    annotation_logticks(sides = "b")+
-    coord_cartesian(xlim = c(1, 10^6))+
-    theme_bw()+
-    labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
-                      "| Verteilung der Zeichen je Dokument"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
-        x = "Zeichen",
-        y = "Dichte"
-    )+
-    theme(
-        text = element_text(size = 14),
-        plot.title = element_text(size = 14,
-                                  face = "bold"),
-        legend.position = "none",
-        plot.margin = margin(10, 20, 10, 10)
-    )
+#' ![](analyse/CE-BVerfG_10_Density_Zeichen-1.pdf)
 
 
+#+
 #'## Verteilung Tokens
 
-#+ C-BVerfGE_11_Density_Tokens, fig.height = 6, fig.width = 9
-ggplot(data = summary.corpus) +
-    geom_density(aes(x = tokens),
-                 fill = "#ca2129") +
-    scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
-                  labels = trans_format("log10", math_format(10^.x)))+
-    annotation_logticks(sides = "b")+
-    coord_cartesian(xlim = c(1, 10^6))+
-    theme_bw() +
-    labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
-                      "| Verteilung der Tokens je Dokument"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
-        x = "Tokens",
-        y = "Dichte"
-    )+
-    theme(
-        text = element_text(size = 14),
-        plot.title = element_text(size = 14,
-                                  face = "bold"),
-        legend.position = "none",
-        plot.margin = margin(10, 20, 10, 10)
-    )
+#' ![](analyse/CE-BVerfG_11_Density_Tokens-1.pdf)
 
+
+
+#+
 #'## Verteilung Typen
 
-
-#+ C-BVerfGE_12_Density_Typen, fig.height = 6, fig.width = 9
-ggplot(data = summary.corpus) +
-    geom_density(aes(x = typen),
-                 fill = "#ca2129") +
-    scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
-                  labels = trans_format("log10", math_format(10^.x)))+
-    annotation_logticks(sides = "b")+
-    coord_cartesian(xlim = c(1, 10^6))+
-    theme_bw() +
-    labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
-                      "| Verteilung der Typen je Dokument"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
-        x = "Typen",
-        y = "Dichte"
-    )+
-    theme(
-        text = element_text(size = 14),
-        plot.title = element_text(size = 14,
-                                  face = "bold"),
-        legend.position = "none",
-        plot.margin = margin(10, 20, 10, 10)
-    )
+#' ![](analyse/CE-BVerfG_12_Density_Typen-1.pdf)
 
 
+
+
+#+
 #'## Verteilung Sätze
 
-#+ C-BVerfGE_13_Density_Saetze, fig.height = 6, fig.width = 9
-ggplot(data = summary.corpus) +
-    geom_density(aes(x = saetze),
-                 fill = "#ca2129") +
-    scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
-                  labels = trans_format("log10", math_format(10^.x)))+
-    annotation_logticks(sides = "b")+
-    coord_cartesian(xlim = c(1, 10^6))+
-    theme_bw() +
-    labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
-                      "| Verteilung der Sätze je Dokument"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
-        x = "Sätze",
-        y = "Dichte"
-    )+
-    theme(
-        text = element_text(size = 14),
-        plot.title = element_text(size = 14,
-                                  face = "bold"),
-        legend.position = "none",
-        plot.margin = margin(10, 20, 10, 10)
-    )
+#' ![](analyse/CE-BVerfG_13_Density_Saetze-1.pdf)
+
+
 
 
 
