@@ -651,6 +651,8 @@ regex.test2 <- grep(paste0("^BVerfG", # gericht
                     invert = TRUE)
 
 
+
+
 #'### Ergebnis der zweiten REGEX-Validierung
 #' Das Ergebnis sollte ein leerer Vektor sein!
 
@@ -924,8 +926,19 @@ print(missing)
 
 
 
-
 #'# HTML verarbeiten
+
+#+
+#'## Funktion anzeigen: f.bverfg.extract.meta
+
+print(f.bverfg.extract.meta)
+
+#+
+#'## Funktion anzeigen: f.bverfg.extract.content
+
+
+print(f.bverfg.extract.content)
+
 
 #+
 #'## HTML-Dateien definieren
@@ -956,9 +969,7 @@ for (i in 1:length(meta.list)){
     segmented.full.list[[i]] <- cbind(content.list[[i]],
                                       meta.replicate)
 
-}
-
-
+    }
 
 
 #'## Data Table mit allen Metadaten (inkl. ECLI)
@@ -967,12 +978,6 @@ dt.meta.html <-  rbindlist(meta.list)
 
 #'## Data Table mit vollständiger segmentierter Variante
 dt.segmented.full <- rbindlist(segmented.full.list)
-
-
-
-
-
-
 
 
 #'## Special Character entfernen
@@ -1019,16 +1024,14 @@ dt.segmented.full$text <- gsub(" ",
 
 #'## Stichprobe Metadaten
 fwrite(dt.meta.html[sample(.N, 50)],
-       "QA_Stichprobe_HTML-Metadaten.csv")
+       file.path(dir.analysis,
+                 "QA_Stichprobe_HTML-Metadaten.csv"))
 
 
 #'## Stichprobe Segmentierte Variante
-fwrite(dt.segmented.full[sample(.N, 30)],
-       "QA_Stichprobe_HTML-SegmentierterVolltext.csv")
-
-
-
-
+fwrite(dt.segmented.full[sample(.N, 50)],
+       file.path(dir.analysis,
+                 "QA_Stichprobe_HTML-SegmentierterVolltext.csv"))
 
 
 
@@ -1056,11 +1059,26 @@ length(files.pdf)
 print(f.dopar.pdfextract)
 
 
+
+
 #'## Text Extrahieren
 
 #+ results = "hide"
-f.dopar.pdfextract(files.pdf,
-                   threads = fullCores)
+
+if(config$parallel$extractPDF == TRUE){
+
+    plan("multicore",
+         workers = fullCores)
+    
+}else{
+
+    plan("sequential")
+
+}
+
+
+
+f.future_pdf_to_txt(files.pdf)
 
 
 
