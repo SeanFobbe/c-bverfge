@@ -541,6 +541,11 @@ df.bverfg <- readtext("*.txt",
 #'\end{longtable}
 #'\end{centering}
 
+
+
+
+
+
 #'\newpage
 #+
 #'# Variablen (Linguistische Annotationen)
