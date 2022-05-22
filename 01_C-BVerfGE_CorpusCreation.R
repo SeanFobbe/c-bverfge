@@ -2262,7 +2262,6 @@ if (config$annotate$toggle == TRUE){
 
 
 
-
 #'# Kontrolle der Variablen
 
 #+
@@ -2348,7 +2347,6 @@ setcolorder(meta.bverfg,
               "doi_version",
               "lizenz"))
 
-
 #'\newpage
 #+
 #'### Variablen sortieren: Segmentiert
@@ -2403,7 +2401,6 @@ names(txt.bverfg)
 names(meta.bverfg)
 names(txt.annotated)
 names(dt.segmented.full)
-
 
 
 
