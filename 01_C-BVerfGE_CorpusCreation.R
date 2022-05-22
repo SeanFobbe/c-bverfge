@@ -2030,7 +2030,6 @@ fwrite(dt.stats.ling,
 
 
 
-
 #'\newpage
 #'## Quantitative Variablen
 
@@ -2090,11 +2089,10 @@ kable(dt.stats.docvars,
 #'### Zusammenfassungen speichern
 
 fwrite(dt.stats.docvars,
-       paste0(outputdir,
-              datasetname,
-              "_00_KorpusStatistik_ZusammenfassungDocvarsQuantitativ.csv"),
+       file.path(dir.analysis,
+                 paste0(config$project$shortname,
+                        "_00_KorpusStatistik_ZusammenfassungDocvarsQuantitativ.csv")),
        na = "NA")
-
 
 
 
