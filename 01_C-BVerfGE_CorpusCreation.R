@@ -1543,14 +1543,14 @@ print(f.fast.freqtable)
 
 
 #'## Ignorierte Variablen
-print(varremove)
+print(config$freqtable$ignore)
 
 
 
 #'## Liste zu prüfender Variablen
 
 varlist <- names(txt.bverfg)
-varlist <- grep(paste(varremove,
+varlist <- grep(paste(config$freqtable$ignore,
                       collapse = "|"),
                 varlist,
                 invert = TRUE,
@@ -1559,9 +1559,10 @@ print(varlist)
 
 
 
+
 #'## Frequenztabellen erstellen
 
-prefix <- paste0(datasetname,
+prefix <- paste0(config$project$shortname,
                  "_01_Frequenztabelle_var-")
 
 
@@ -1572,10 +1573,11 @@ f.fast.freqtable(txt.bverfg,
                  output.list = FALSE,
                  output.kable = TRUE,
                  output.csv = TRUE,
-                 outputdir = outputdir,
+                 outputdir = dir.analysis,
                  prefix = prefix,
                  align = c("p{5cm}",
                            rep("r", 4)))
+
 
 
 
@@ -1585,9 +1587,9 @@ f.fast.freqtable(txt.bverfg,
 #+
 #'## Präfix erstellen
 
-prefix <- paste0("ANALYSE/",
-                 datasetname,
-                 "_01_Frequenztabelle_var-")
+prefix <- file.path(dir.analysis,
+                    paste0(config$project$shortname,
+                           "_01_Frequenztabelle_var-"))
 
 
 #'## Tabellen einlesen
@@ -1618,14 +1620,13 @@ table.output.vpraesi <- fread(paste0(prefix,
 
 
 
-
 #'\newpage
 #'## Diagramm: Typ der Entscheidung
 
 freqtable <- table.entsch.typ[-.N]
 
 
-#+ C-BVerfGE_02_Barplot_Entscheidung_Typ, fig.height = 6, fig.width = 9
+#+ CE-BVerfG_02_Barplot_Entscheidung_Typ, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = reorder(entscheidung_typ,
                              -N),
@@ -1636,13 +1637,9 @@ ggplot(data = freqtable) +
              width = 0.4) +
     theme_bw() +
     labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
+        title = paste(prefix.figuretitle,
                       "| Entscheidungen je Entscheidungs-Typ"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
+        caption = caption,
         x = "Typ der Entscheidung",
         y = "Entscheidungen"
     )+
@@ -1666,7 +1663,7 @@ ggplot(data = freqtable) +
 freqtable <- table.spruch.typ[-.N]
 
 
-#+ C-BVerfGE_03_Barplot_Spruchkoerper_Typ, fig.height = 6, fig.width = 9
+#+ CE-BVerfG_03_Barplot_Spruchkoerper_Typ, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = reorder(spruchkoerper_typ,
                              -N),
@@ -1677,13 +1674,9 @@ ggplot(data = freqtable) +
              width = 0.4) +
     theme_bw() +
     labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
+        title = paste(prefix.figuretitle,
                       "| Entscheidungen je Spruchkörper-Typ"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
+        caption = caption,
         x = "Typ des Spruchkörpers",
         y = "Entscheidungen"
     )+
@@ -1704,7 +1697,7 @@ ggplot(data = freqtable) +
 freqtable <- table.spruch.az[-.N]
 
 
-#+ C-BVerfGE_04_Barplot_Spruchkoerper_AZ, fig.height = 6, fig.width = 9
+#+ CE-BVerfG_04_Barplot_Spruchkoerper_AZ, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = spruchkoerper_az,
                  y = N),
@@ -1714,13 +1707,9 @@ ggplot(data = freqtable) +
              width = 0.4) +
     theme_bw() +
     labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
+        title = paste(prefix.figuretitle,
                       "| Entscheidungen je Senat (Aktenzeichen)"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
+        caption = caption,
         x = "Senat",
         y = "Entscheidungen"
     )+
@@ -1739,7 +1728,7 @@ ggplot(data = freqtable) +
 
 freqtable <- table.regz[-.N]
 
-#+ C-BVerfGE_05_Barplot_Registerzeichen, fig.height = 10, fig.width = 8
+#+ CE-BVerfG_05_Barplot_Registerzeichen, fig.height = 10, fig.width = 8
 ggplot(data = freqtable) +
     geom_bar(aes(x = reorder(registerzeichen,
                              N),
@@ -1750,13 +1739,9 @@ ggplot(data = freqtable) +
     coord_flip()+
     theme_bw() +
     labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
+        title = paste(prefix.figuretitle,
                       "| Entscheidungen je Registerzeichen"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
+        caption = caption,
         x = "Registerzeichen",
         y = "Entscheidungen"
     )+
@@ -1775,7 +1760,7 @@ ggplot(data = freqtable) +
 
 freqtable <- table.output.praesi[-.N]
 
-#+ C-BVerfGE_06_Barplot_PraesidentIn, fig.height = 6, fig.width = 9
+#+ CE-BVerfG_06_Barplot_PraesidentIn, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = reorder(praesi,
                              N),
@@ -1786,13 +1771,9 @@ ggplot(data = freqtable) +
     coord_flip()+
     theme_bw() +
     labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
+        title = paste(prefix.figuretitle,
                       "| Entscheidungen je Präsident:in"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
+        caption = caption,
         x = "Präsident:in",
         y = "Entscheidungen"
     )+
@@ -1812,7 +1793,7 @@ ggplot(data = freqtable) +
 
 freqtable <- table.output.vpraesi[-.N]
 
-#+ C-BVerfGE_07_Barplot_VizePraesidentIn, fig.height = 6, fig.width = 9
+#+ CE-BVerfG_07_Barplot_VizePraesidentIn, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = reorder(v_praesi,
                              N),
@@ -1823,13 +1804,9 @@ ggplot(data = freqtable) +
     coord_flip()+
     theme_bw() +
     labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
+        title = paste(prefix.figuretitle,
                       "| Entscheidungen je Vize-Präsident:in"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
+        caption = caption,
         x = "Vize-Präsident:in",
         y = "Entscheidungen"
     )+
@@ -1849,7 +1826,7 @@ ggplot(data = freqtable) +
 
 freqtable <- table.jahr.entscheid[-.N][,lapply(.SD, as.numeric)]
 
-#+ C-BVerfGE_08_Barplot_Entscheidungsjahr, fig.height = 6, fig.width = 9
+#+ CE-BVerfG_08_Barplot_Entscheidungsjahr, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = entscheidungsjahr,
                  y = N),
@@ -1857,13 +1834,9 @@ ggplot(data = freqtable) +
              fill = "#ca2129") +
     theme_bw() +
     labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
+        title = paste(prefix.figuretitle,
                       "| Entscheidungen je Entscheidungsjahr"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
+        caption = caption,
         x = "Entscheidungsjahr",
         y = "Entscheidungen"
     )+
@@ -1884,7 +1857,7 @@ freqtable <- table.jahr.eingangISO[-.N][,lapply(.SD, as.numeric)]
 
 
 
-#+ C-BVerfGE_09_Barplot_EingangsjahrISO, fig.height = 6, fig.width = 9
+#+ CE-BVerfG_09_Barplot_EingangsjahrISO, fig.height = 6, fig.width = 9
 ggplot(data = freqtable) +
     geom_bar(aes(x = eingangsjahr_iso,
                  y = N),
@@ -1892,13 +1865,9 @@ ggplot(data = freqtable) +
              fill = "#ca2129") +
     theme_bw() +
     labs(
-        title = paste(datasetname,
-                      "| Version",
-                      datestamp,
+        title = paste(prefix.figuretitle,
                       "| Entscheidungen je Eingangsjahr (ISO)"),
-        caption = paste("DOI:",
-                        doi.version,
-                        "| Fobbe"),
+        caption = caption,
         x = "Eingangsjahr (ISO)",
         y = "Entscheidungen"
     )+
@@ -1909,6 +1878,7 @@ ggplot(data = freqtable) +
         legend.position = "none",
         plot.margin = margin(10, 20, 10, 10)
     )
+
 
 
 
