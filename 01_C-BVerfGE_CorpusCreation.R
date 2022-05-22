@@ -2576,10 +2576,11 @@ ggplot(data = dt.plot,
 
 
 
+
 #'# Erstellen der ZIP-Archive
 
+#+
 #'## Verpacken der CSV-Dateien
-
 
 #+
 #'### Vollständiger Datensatz
@@ -2594,6 +2595,7 @@ zip(csvname.full.zip,
     csvname.full)
 
 unlink(csvname.full)
+
 
 #+
 #'### Metadaten
@@ -2627,8 +2629,9 @@ unlink(csvname.segmented)
 #+
 #'### Annotiert
 
+
 #+ results = 'hide'
-if (mode.annotate == TRUE){
+if (config$annotate$toggle == TRUE){
 
     csvname.annotated.zip <- gsub(".csv",
                                   ".zip",
@@ -2642,15 +2645,13 @@ if (mode.annotate == TRUE){
 }
 
 
-
 #'## Verpacken der PDF-Dateien
 
 files.pdf <- list.files(pattern = "\\.pdf",
                          ignore.case = TRUE)
 
 #+ results = 'hide'
-zip(paste(datasetname,
-          datestamp,
+zip(paste(prefix.files,
           "DE_PDF_Datensatz.zip",
           sep = "_"),
     files.pdf)
@@ -2665,8 +2666,7 @@ files.html <- list.files(pattern = "\\.html",
                          ignore.case = TRUE)
 
 #+ results = 'hide'
-zip(paste(datasetname,
-          datestamp,
+zip(paste(prefix.files,
           "DE_HTML_Datensatz.zip",
           sep = "_"),
     files.html)
@@ -2683,8 +2683,7 @@ files.txt <- list.files(pattern = "\\.txt",
                         ignore.case = TRUE)
 
 #+ results = 'hide'
-zip(paste(datasetname,
-          datestamp,
+zip(paste(prefix.files,
           "DE_TXT_Datensatz.zip",
           sep = "_"),
     files.txt)
@@ -2696,20 +2695,29 @@ unlink(files.txt)
 
 #'## Verpacken der Analyse-Dateien
 
-zip(paste0(datasetname,
-           "_",
-           datestamp,
-           "_DE_",
-           basename(outputdir),
-           ".zip"),
-    basename(outputdir))
+zip(paste0(prefix.files,
+           "_DE_ANALYSE.zip"),
+    basename(dir.analysis))
+
 
 
 
 #'## Verpacken der Source-Dateien
 
-files.source <- c(list.files(pattern = "Source"),
-                  "buttons")
+files.source <- c(list.files(pattern = "\\.R$|\\.toml$"),
+                  "CHANGELOG.md",
+                  "README.md",
+                  "R-fobbe-proto-package",
+                  "buttons",
+                  "data",
+                  "functions",
+                  "tex",
+                  "gpg",
+                  list.files(pattern = "renv\\.lock|\\.Rprofile",
+                             all.files = TRUE),
+                  list.files("renv",
+                             pattern = "activate\\.R",
+                             full.names = TRUE))
 
 
 files.source <- grep("spin",
@@ -2718,17 +2726,17 @@ files.source <- grep("spin",
                      ignore.case = TRUE,
                      invert = TRUE)
 
-zip(paste(datasetname,
-           datestamp,
+zip(paste(prefix.files,
            "Source_Files.zip",
-           sep = "_"),
+          sep = "_"),
     files.source)
+
+
 
 
 
 #'# Kryptographische Hashes
 #' Dieses Modul berechnet für jedes ZIP-Archiv zwei Arten von Hashes: SHA2-256 und SHA3-512. Mit diesen kann die Authentizität der Dateien geprüft werden und es wird dokumentiert, dass sie aus diesem Source Code hervorgegangen sind. Die SHA-2 und SHA-3 Algorithmen sind äußerst resistent gegenüber *collision* und *pre-imaging* Angriffen, sie gelten derzeit als kryptographisch sicher. Ein SHA3-Hash mit 512 bit Länge ist nach Stand von Wissenschaft und Technik auch gegenüber quantenkryptoanalytischen Verfahren unter Einsatz des *Grover-Algorithmus* hinreichend resistent.
-
 
 
 #+
@@ -2737,18 +2745,37 @@ files.zip <- list.files(pattern = "\\.zip$",
                         ignore.case = TRUE)
 
 
-#'## Funktion anzeigen
-#+ results = "asis"
-print(f.dopar.multihashes)
+#'## Funktion anzeigen: future_multihashes
+
+print(f.future_multihashes)
 
 
 #'## Hashes berechnen
-multihashes <- f.dopar.multihashes(files.zip)
+
+
+if(config$parallel$multihashes == TRUE){
+
+    plan("multicore",
+         workers = fullCores)
+    
+}else{
+
+    plan("sequential")
+
+     }
+
+
+multihashes <- f.future_multihashes(files.zip)
+
+
 
 
 #'## In Data Table umwandeln
 setDT(multihashes)
 
+setnames(multihashes,
+         old = "x",
+         new = "filename")
 
 
 #'## Index hinzufügen
@@ -2757,10 +2784,10 @@ multihashes$index <- seq_len(multihashes[,.N])
 #'\newpage
 #'## In Datei schreiben
 fwrite(multihashes,
-       paste(datasetname,
-             datestamp,
-             "KryptographischeHashes.csv",
-             sep = "_"),
+       file.path("output",
+                 paste(prefix.files,
+                       "KryptographischeHashes.csv",
+                       sep = "_")),
        na = "NA")
 
 
@@ -2797,6 +2824,21 @@ kable(multihashes[,.(index,sha3.512)],
                 "p{13cm}"),
       booktabs = TRUE,
       longtable = TRUE)
+
+
+
+#'# Aufräumen
+
+files.output <- list.files(pattern = "\\.zip")
+
+output.destination <- file.path("output",
+                                 files.output)
+
+print(files.output)
+
+file.rename(files.output,
+            output.destination)
+
 
 
 
