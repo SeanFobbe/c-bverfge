@@ -2413,8 +2413,7 @@ names(dt.segmented.full)
 
 #'## CSV mit vollem Datensatz speichern
 
-csvname.full <- paste(datasetname,
-                      datestamp,
+csvname.full <- paste(prefix.files,
                       "DE_CSV_Datensatz.csv",
                       sep = "_")
 
@@ -2424,23 +2423,23 @@ fwrite(txt.bverfg,
 
 
 
+
 #'## CSV mit Metadaten speichern
 #' Diese Datei ist grundsätzlich identisch mit dem eigentlichen Datensatz, nur ohne den Text der Entscheidungen.
 
-csvname.meta <- paste(datasetname,
-                      datestamp,
+csvname.meta <- paste(prefix.files,
                       "DE_CSV_Metadaten.csv",
                       sep = "_")
 
-fwrite(summary.corpus,
+fwrite(meta.bverfg,
        csvname.meta,
        na = "NA")
 
 
+
 #'## CSV mit Segmenten speichern
 
-csvname.segmented <- paste(datasetname,
-                           datestamp,
+csvname.segmented <- paste(prefix.files,
                            "DE_CSV_Segmentiert.csv",
                            sep = "_")
 
@@ -2452,10 +2451,9 @@ fwrite(dt.segmented.full,
 
 #'## CSV mit Annotationen speichern
 
-if (mode.annotate == TRUE){
+if (config$annotate$toggle == TRUE){
 
-    csvname.annotated <- paste(datasetname,
-                               datestamp,
+    csvname.annotated <- paste(prefix.files,
                                "DE_CSV_Annotiert.csv",
                                sep = "_")
 
@@ -2464,6 +2462,7 @@ if (mode.annotate == TRUE){
            na = "NA")
 
 }
+
 
 
 
