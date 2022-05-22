@@ -11,9 +11,9 @@
 #'    number_sections: true
 #'    pandoc_args: --listings
 #'    includes:
-#'      in_header: General_Source_TEX_Preamble_DE.tex
-#'      before_body: [C-BVerfGE_Source_TEX_Definitions.tex,C-BVerfGE_Source_TEX_CodebookTitle.tex]
-#'bibliography: packages.bib
+#'      in_header: tex/Preamble_DE.tex
+#'      before_body: [temp/CE-BVerfG_Definitions.tex, tex/CE-BVerfG_CodebookTitle.tex]
+#'bibliography: temp/packages.bib
 #'nocite: '@*'
 #' ---
 
