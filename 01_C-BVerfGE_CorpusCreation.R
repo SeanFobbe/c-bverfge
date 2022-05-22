@@ -1883,6 +1883,8 @@ ggplot(data = freqtable) +
 
 
 
+
+
 #'# Korpus-Analytik
 #'
 
@@ -1893,15 +1895,35 @@ ggplot(data = freqtable) +
 
 #+
 #'### Funktion anzeigen
-print(f.summarize.iterator)
+print(f.future_lingsummarize)
 
 
 
 
 #'### Berechnung durchführen
-summary.corpus <- f.summarize.iterator(txt.bverfg,
-                                       threads = fullCores,
-                                       chunksize = 1)
+
+if(config$parallel$lingsummarize == TRUE){
+
+    plan("multicore",
+         workers = fullCores)
+    
+}else{
+
+    plan("sequential")
+
+     }
+
+
+
+
+#+ lingsummarize, results = 'hide', message = FALSE, warning = FALSE
+summary.corpus <- f.future_lingsummarize(txt.bverfg)
+
+
+#deprecated; Parallelisierung jetzt mit futures
+#summary.corpus <- f.lingsummarize.iterator(txt.bverfg,
+#                                           threads = fullCores,
+#                                           chunksize = 1)
 
 
 
@@ -1929,9 +1951,7 @@ meta.bverfg <- txt.bverfg[, !"text"]
 
 
 
-
 #'## Linguistische Kennwerte
-
 
 #+
 #'### Zusammenfassungen berechnen
@@ -1950,6 +1970,7 @@ dt.sums.ling <- meta.bverfg[,
                                         "tokens",
                                         "typen",
                                         "saetze")]
+
 
 
 tokens.temp <- tokens(corpus(txt.bverfg),
@@ -2002,9 +2023,9 @@ kable(dt.stats.ling,
 #'### Zusammenfassungen speichern
 
 fwrite(dt.stats.ling,
-       paste0(outputdir,
-              datasetname,
-              "_00_KorpusStatistik_ZusammenfassungLinguistisch.csv"),
+       file.path(dir.analysis,
+                 paste0(config$project$shortname,
+                        "_00_KorpusStatistik_ZusammenfassungLinguistisch.csv")),
        na = "NA")
 
 
