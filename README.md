@@ -33,7 +33,7 @@ Um den **vollständigen Datensatz** zu kompilieren, sowie Compilation Report und
 
 
 ```
-source("00_CE-BVerfG_FullCompile.R")
+source("00_C-BVerfGE_FullCompile.R")
 ```
 
 Bei der Prüfung der GPG-Signatur im Codebook wird ein Fehler auftreten und im Codebook dokumentiert, weil die Daten nicht mit meiner Original-Signatur versehen sind. Dieser Fehler hat jedoch keine Auswirkungen auf die Funktionalität und hindert die Kompilierung nicht.
