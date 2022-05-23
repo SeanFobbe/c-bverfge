@@ -3,6 +3,7 @@
 ## Version \version
 
 - Vollständige Aktualisierung der Daten
+- Überarbeitung der codierten Entscheidungsnamen
 - Strenge Versionskontrolle von R packages mit **renv**
 - Kompilierung jetzt detailliert konfigurierbar, insbesondere die Parallelisierung
 - Parallelisierung nun vollständig mit *future* statt mit *foreach* und *doParallel*
