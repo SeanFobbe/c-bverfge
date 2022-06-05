@@ -433,6 +433,14 @@ links.pdf <- setdiff(links.pdf,
                      links.remove)
 
 
+#'## Einzelkorrektur für AfD-Beitritt zu Mietendeckeln (PDF)
+#'
+#' Hier weicht die Struktur des PDF-Links von der des HTML-Links ab. 
+
+links.pdf <- gsub("fs20210325_2bvf000120_1",
+                  "fs20210325_2bvf000120",
+                  links.pdf)
+
 
 
 #'## HTML-Links definieren
@@ -444,6 +452,16 @@ links.html <- gsub("Downloads",
 links.html <- gsub("pdf\\?__.*",
                    "html",
                    links.html)
+
+
+#'## Einzelkorrektur für AfD-Beitritt zu Mietendeckeln (HTML)
+#'
+#' Hier weicht die Struktur des PDF-Links von der des HTML-Links ab.
+
+links.html <- gsub("fs20210325_2bvf000120",
+                  "fs20210325_2bvf000120_1",
+                  links.html)
+
 
 
 
