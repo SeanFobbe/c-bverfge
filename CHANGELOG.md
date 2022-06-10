@@ -2,7 +2,7 @@
 
 ## Version \version
 
-- Vollständige Aktualisierung der Daten
+- Vollständige Aktualisierung der Daten (bis inklusive Band 158)
 - Überarbeitung der codierten Entscheidungsnamen
 - Strenge Versionskontrolle von R packages mit **renv**
 - Kompilierung jetzt detailliert konfigurierbar, insbesondere die Parallelisierung
