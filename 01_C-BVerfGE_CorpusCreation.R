@@ -658,7 +658,7 @@ regex.test2 <- grep(paste0("^BVerfG", # gericht
                            "_",
                            "[0-9a-zNA]+", # kollision
                            "_",
-                           "[0-9ÄÜÖäüöA-Za-z\\-]+", # name
+                           "[0-9ßÄÜÖäüöA-Za-z\\-]+", # name
                            "_",
                            "[NA0-9]+", # band
                            "_",
@@ -680,7 +680,7 @@ print(regex.test2)
 #'### Skript stoppen falls zweite REGEX-Validierung gescheitert
 
 if (length(regex.test2) != 0){
-    stop("REGEX VALIDIERUNG 2 GESCHEITERT: AKTENZEICHEN ENTSPRECHEN NICHT DEM CODEBOOK-SCHEMA!")
+    stop("REGEX VALIDIERUNG 2 GESCHEITERT: DATEINAMEN ENTSPRECHEN NICHT DEM CODEBOOK-SCHEMA!")
     }
 
 
