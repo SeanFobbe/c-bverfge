@@ -4,6 +4,7 @@
 
 - Vollständige Aktualisierung der Daten (bis inklusive Band 158)
 - Überarbeitung der codierten Entscheidungsnamen
+- Standardisierung der Befangenheitsanträge als "Selbstablehnung" und "Richterablehnung" in der Variable "name"
 - Strenge Versionskontrolle von R packages mit **renv**
 - Kompilierung jetzt detailliert konfigurierbar, insbesondere die Parallelisierung
 - Parallelisierung nun vollständig mit *future* statt mit *foreach* und *doParallel*
