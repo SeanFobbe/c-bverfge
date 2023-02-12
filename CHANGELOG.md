@@ -2,6 +2,12 @@
 
 ## Version \version
 
+- Vollständige Aktualisierung der Daten (bis inklusive Band ???)
+- 50 neue historische Entscheidungen aus dem Zeitraum 1951 bis 1998
+
+
+## Version 2022-06-20
+
 - Vollständige Aktualisierung der Daten (bis inklusive Band 158)
 - Überarbeitung der codierten Entscheidungsnamen
 - Standardisierung der Befangenheitsanträge als "Selbstablehnung" und "Richterablehnung" in der Variable "name"
