@@ -3,7 +3,9 @@
 ## Version \version
 
 - Vollständige Aktualisierung der Daten (bis inklusive Band ???)
-- 50 neue historische Entscheidungen aus dem Zeitraum 1951 bis 1998
+- 50 neue historische Entscheidungen aus dem Zeitraum 1951 bis 1998 (u.a. Elfes, Schleyer-Entführung)
+
+
 
 
 ## Version 2022-06-20
