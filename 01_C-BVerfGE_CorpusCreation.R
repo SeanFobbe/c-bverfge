@@ -1311,7 +1311,7 @@ txt.bverfg$aktenzeichen <- paste0(txt.bverfg$spruchkoerper_az,
                                   " ",
                                   txt.bverfg$eingangsnummer,
                                   "/",
-                                  txt.bverfg$eingangsjahr_az)
+                                  formatC(txt.bverfg$eingangsjahr_az, flag = "0", width = 2))
 
 
 
