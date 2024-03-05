@@ -10,7 +10,7 @@
 
 
 
-## Version
+## Version 2023-02-20
 
 - Vollständige Aktualisierung der Daten (bis inklusive Band 160)
 - 50 neue historische Entscheidungen aus dem Zeitraum 1951 bis 1998 (u.a. Elfes, Schleyer-Entführung, Kurzarbeitergeld, Nachtarbeiterinnen)
