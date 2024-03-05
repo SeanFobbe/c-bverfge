@@ -3,7 +3,8 @@
 ## Version \version
 
 
-- Vollständige Aktualisierung der Daten (bis inklusive Band ???)
+- Vollständige Aktualisierung der Daten (bis inklusive Band 164)
+- Über 60 neue historische Entscheidungen aus dem Zeitraum 1970 bis 1998 (u.a. Mauerschützen)
 - Versionskontrolle aller verwendeten Software mit Docker
 - Vereinfachung der Repository-Struktur
 - Entfernung der Submodule-Abhängigkeit
