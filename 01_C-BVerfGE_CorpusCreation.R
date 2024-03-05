@@ -145,7 +145,7 @@ knitr::write_bib(c(.packages()),
 
 #+
 #'### Konfiguration einlesen
-config <- parseTOML("C-BVerfGE_Config.toml")
+config <- parseTOML("config.toml")
 
 #'### Konfiguration anzeigen
 print(config)
