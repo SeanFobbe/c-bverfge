@@ -17,7 +17,7 @@ EPUB/
 *.jpeg
 *.gif
 *.pdf
-*.txt
+#*.txt
 *.epub
 *.html
 *.htm
