@@ -1,0 +1,18 @@
+# Project directories
+
+analysis/
+test/
+output/
+temp/
+files/
+
+
+# git
+
+.git/
+
+
+
+# Tex
+
+tex/auto/
