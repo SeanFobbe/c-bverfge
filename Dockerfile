@@ -1,6 +1,6 @@
 FROM rocker/r-ver:4.2.2
 
-WORKDIR /c-bverfge
+
 
 #RUN sudo apt-get remove -y rstudio-server # only if tidyverse or verse base images used
 
@@ -20,4 +20,6 @@ RUN pip install -r requirements-python.txt
 COPY etc/requirements-R.R .
 RUN Rscript requirements-R.R
 
+# Config layers
+WORKDIR /c-bverfge
 CMD "R"
