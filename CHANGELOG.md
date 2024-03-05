@@ -3,7 +3,7 @@
 ## Version \version
 
 
-- Vollständige Aktualisierung der Daten (bis inklusive Band 164)
+- Vollständige Aktualisierung der Daten (bis einschließlich Band 164)
 - Über 60 neue historische Entscheidungen aus dem Zeitraum 1970 bis 1998 (u.a. Mauerschützen)
 - Versionskontrolle aller verwendeten Software mit Docker
 - Vereinfachung der Repository-Struktur
@@ -13,7 +13,7 @@
 
 ## Version 2023-02-20
 
-- Vollständige Aktualisierung der Daten (bis inklusive Band 160)
+- Vollständige Aktualisierung der Daten (bis einschließlich Band 160)
 - 50 neue historische Entscheidungen aus dem Zeitraum 1951 bis 1998 (u.a. Elfes, Schleyer-Entführung, Kurzarbeitergeld, Nachtarbeiterinnen)
 - Aktenzeichen aus dem Eingangszeitraum 2000 bis 2009 nun korrekt mit führender Null formatiert (z.B. 1 BvR 44/02 statt 1 BvR 44/2)
 - Überarbeitung der Namen der Entscheidungen, u.a. Einfügung von Bindestrichen um Lesbarkeit zu verbessern und weitere Standardisierung
@@ -21,7 +21,7 @@
 
 ## Version 2022-06-20
 
-- Vollständige Aktualisierung der Daten (bis inklusive Band 158)
+- Vollständige Aktualisierung der Daten (bis einschließlich Band 158)
 - Überarbeitung der codierten Entscheidungsnamen
 - Standardisierung der Befangenheitsanträge als "Selbstablehnung" und "Richterablehnung" in der Variable "name"
 - Strenge Versionskontrolle von R packages mit **renv**
