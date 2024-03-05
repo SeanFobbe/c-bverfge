@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  c-bverfge:
+    container_name: c-bverfge
+    image: c-bverfge:4.2.2
+    tty: true
+    volumes:
+      - .:/c-bverfge
