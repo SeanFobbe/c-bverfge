@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.7"
 
 services:
   c-bverfge:
@@ -7,3 +7,4 @@ services:
     tty: true
     volumes:
       - .:/c-bverfge
+      - ./etc/gitconfig:/etc/gitconfig
