@@ -79,17 +79,17 @@ library(future.apply) # Apply-Funtionen für Futures
 source("functions/f.bverfg.extract.content.R")
 source("functions/f.bverfg.extract.meta.R")
 
-source("R-fobbe-proto-package/f.remove.specialunderline.R")
-source("R-fobbe-proto-package/f.linkextract.R")
+source("functions/f.remove.specialunderline.R")
+source("functions/f.linkextract.R")
 
-source("R-fobbe-proto-package/f.hyphen.remove.R")
-source("R-fobbe-proto-package/f.year.iso.R")
-source("R-fobbe-proto-package/f.fast.freqtable.R")
+source("functions/f.hyphen.remove.R")
+source("functions/f.year.iso.R")
+source("functions/f.fast.freqtable.R")
 
-source("R-fobbe-proto-package/f.future_lingsummarize.R")
-source("R-fobbe-proto-package/f.future_multihashes.R")
-source("R-fobbe-proto-package/f.future_pdf_to_txt.R")
-source("R-fobbe-proto-package/f.future_spacyparse.R")
+source("functions/f.future_lingsummarize.R")
+source("functions/f.future_multihashes.R")
+source("functions/f.future_pdf_to_txt.R")
+source("functions/f.future_spacyparse.R")
 
 
 
@@ -2725,7 +2725,6 @@ zip(paste0(prefix.files,
 files.source <- c(list.files(pattern = "\\.R$|\\.toml$"),
                   "CHANGELOG.md",
                   "README.md",
-                  "R-fobbe-proto-package",
                   "buttons",
                   "data",
                   "functions",
