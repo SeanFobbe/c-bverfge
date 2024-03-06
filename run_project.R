@@ -57,8 +57,6 @@ print(end.compreport-begin.compreport)
 
 #'# Codebook
 #' Um das **Codebook** zu kompilieren und einen PDF-Bericht zu erstellen, führen Sie bitte im Anschluss an die Kompilierung des Datensatzes (!) untenstehenden Befehl mit R aus.
-#'
-#' Bei der Prüfung der GPG-Signatur wird ein Fehler auftreten und im Codebook dokumentiert, weil die Daten nicht mit meiner Original-Signatur versehen sind. Dieser Fehler hat jedoch keine Auswirkungen auf die Funktionalität und hindert die Kompilierung nicht.
 
 
 rmarkdown::render(input = "02_C-BVerfGE_CodebookCreation.R",
