@@ -4,10 +4,11 @@
 
 
 - Vollständige Aktualisierung der Daten (bis einschließlich Band 164)
-- Über 60 neue historische Entscheidungen aus dem Zeitraum 1970 bis 1998 (u.a. Mauerschützen)
+- Über 40 neue historische Entscheidungen aus dem Zeitraum 1970 bis 1998 (u.a. Mauerschützen)
 - Versionskontrolle aller verwendeten Software mit Docker
 - Vereinfachung der Repository-Struktur
-- Entfernung der Submodule-Abhängigkeit
+- Erstellung des Source-Archivs aus dem Git Manifest
+- Entfernung des Submodules und Überführung der Funktionen in das Hautprojekt
 
 
 
