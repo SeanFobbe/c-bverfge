@@ -360,6 +360,13 @@ links5a <- grep ("SharedDocs/Entscheidungen",
                 ignore.case = TRUE,
                 value = TRUE)
 
+links5a <- grep ("target:/BVerfG", # fehlerhafter Link
+                links5a,
+                ignore.case = TRUE,
+                value = TRUE,
+                invert = TRUE)
+
+
 links5a <- paste0("https://www.bundesverfassungsgericht.de/",
                   links5a)
 
@@ -403,7 +410,8 @@ links.add <- c("https://www.bundesverfassungsgericht.de/SharedDocs/Downloads/DE/
                "https://www.bundesverfassungsgericht.de/SharedDocs/Downloads/DE/2004/03/ks20040330_2bvk000101.pdf?__blob=publicationFile&v=1",
                "https://www.bundesverfassungsgericht.de/SharedDocs/Downloads/DE/2007/03/es20070329_2bve000207.pdf?__blob=publicationFile&v=1",
                "https://www.bundesverfassungsgericht.de/SharedDocs/Downloads/DE/2015/07/qk20150720_1bvq002515.pdf?__blob=publicationFile&v=2",
-               "https://www.bundesverfassungsgericht.de/SharedDocs/Downloads/DE/2015/12/rs20151216_2bvr195813.pdf?__blob=publicationFile&v=5")
+               "https://www.bundesverfassungsgericht.de/SharedDocs/Downloads/DE/2015/12/rs20151216_2bvr195813.pdf?__blob=publicationFile&v=5",
+               "https://www.bundesverfassungsgericht.de/SharedDocs/Downloads/DE/1973/02/rs19730214_1bvr011265.pdf?__blob=publicationFile&v=1")
 
 
 
