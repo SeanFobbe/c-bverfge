@@ -1103,85 +1103,16 @@ kable(table.size,
 
 #+
 #'## Persönliche GPG-Signatur
-#' Die während der Kompilierung des Datensatzes erstellte CSV-Datei mit den Hash-Prüfsummen ist mit meiner persönlichen GPG-Signatur versehen. Der mit dieser Version korrespondierende Public Key ist sowohl mit dem Datensatz als auch mit dem Source Code hinterlegt. Er hat folgende Kenndaten:
+#' Die während der Kompilierung des Datensatzes erstellte CSV-Datei mit den Hash-Prüfsummen und der Compilation Report sind mit meiner persönlichen GPG-Signatur versehen. Der mit dieser Version korrespondierende Public Key ist sowohl mit dem Datensatz als auch mit dem Source Code hinterlegt. Er hat folgende Kenndaten:
 #' 
 #' **Name:** Sean Fobbe (fobbe-data@posteo.de)
 #' 
 #' **Fingerabdruck:** FE6F B888 F0E5 656C 1D25  3B9A 50C4 1384 F44A 4E42
 
-#+
-#'## Import: Public Key
-#+ echo = TRUE
-system2("gpg2", "--import gpg/PublicKey_Fobbe-Data.asc",
-        stdout = TRUE,
-        stderr = TRUE)
-
-
 
 
 #'\newpage
-#+
-#'## Prüfung: GPG-Signatur der Hash-Datei
-
-#+ echo = TRUE
-
-# CSV-Datei mit Hashes
-print(hashfile)
-
-# GPG-Signatur
-print(signaturefile)
-
-# GPG-Signatur prüfen
-testresult <- system2("gpg2",
-                      paste("--verify", signaturefile, hashfile),
-                      stdout = TRUE,
-                      stderr = TRUE)
-
-# Anführungsstriche entfernen um Anzeigefehler zu vermeiden
-testresult <- gsub('"', '', testresult)
-
-#+ echo = TRUE
-kable(testresult, format = "latex", booktabs = TRUE,
-      longtable = TRUE, col.names = c("Ergebnis"))
-
-
-#'\newpage
-#+
-#'## Prüfung: SHA3-512 Hashes der ZIP-Archive
-#+ echo = TRUE
-
-# Prüf-Funktion definieren
-sha3test <- function(filename, sig){
-    sig.new <- system2("openssl",
-                       paste("sha3-512", filename),
-                       stdout = TRUE)
-    sig.new <- gsub("^.*\\= ", "", sig.new)
-    if (sig == sig.new){
-        return("Signatur verifiziert!")
-    }else{
-        return("FEHLER!")
-    }
-}
-
-# Ursprüngliche Signaturen importieren
-table.hashes <- fread(hashfile)
-filename <- file.path("output", table.hashes$filename)
-sha3.512 <- table.hashes$sha3.512
-
-# Signaturprüfung durchführen 
-sha3.512.result <- mcmapply(sha3test, filename, sha3.512, USE.NAMES = FALSE)
-
-# Ergebnis anzeigen
-testresult <- data.table(basename(filename), sha3.512.result)
-
-#+ echo = TRUE
-kable(testresult, format = "latex", booktabs = TRUE,
-      longtable = TRUE, col.names = c("Datei", "Ergebnis"))
-
-
-
-
-
+#' 
 #+ results = "asis"
 cat(readLines("CHANGELOG.md"),
     sep = "\n")
