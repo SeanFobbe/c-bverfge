@@ -5,7 +5,9 @@
 
 Dieser Code lädt alle auf [www.bundesverfassungsgericht.de](https://www.bundesverfassungsgericht.de) veröffentlichten Entscheidungen der amtlichen Entscheidungssammlung des Bundesverfassungsgerichts (BVerfG) herunter und kompiliert sie in einen reichhaltigen menschen- und maschinenlesbaren Korpus. Es ist die Grundlage für den **Corpus der amtlichen Entscheidungssamlung des Bundesverfassungsgerichts (C-BVerfGE)**.
 
-Alle mit diesem Skript erstellten Datensätze werden dauerhaft kostenlos und urheberrechtsfrei auf Zenodo, dem wissenschaftlichen Archiv des CERN, veröffentlicht. Alle Versionen sind mit einem persistenten Digital Object Identifier (DOI) versehen. Die neueste Version des Datensatzes ist immer über den Link der Concept DOI erreichbar: <https://doi.org/10.5281/zenodo.3831111>
+Alle mit diesem Skript erstellten Datensätze werden dauerhaft kostenlos und urheberrechtsfrei auf Zenodo, dem wissenschaftlichen Archiv des CERN, veröffentlicht. Alle Versionen sind mit einem separaten und langzeit-stabilen (persistenten) Digital Object Identifier (DOI) versehen.
+
+Aktuellster, funktionaler und zitierfähiger Release des Datensatzes: <https://doi.org/10.5281/zenodo.3831111>
 
 
 ##  Funktionsweise
@@ -21,55 +23,63 @@ Primäre Endprodukte des Skripts sind folgende ZIP-Archive (im Ordner 'output'):
 -  Der Source Code und alle weiteren Quelldaten
 
 
-Zusätzlich werden für alle ZIP-Archive kryptographische Signaturen (SHA2-256 und SHA3-512) berechnet und in einer CSV-Datei hinterlegt. Weiterhin kann optional ein PDF-Bericht erstellt werden (siehe unter "Kompilierung").
+Alle Ergebnisse werden im Ordner `output` abgelegt. Zusätzlich werden für alle ZIP-Archive kryptographische Signaturen (SHA2-256 und SHA3-512) berechnet und in einer CSV-Datei hinterlegt.
 
-
-
-## Kompilierung
-
-Alle Kommentare sind im roxygen2-Stil gehalten. Die beiden Skripte können daher auch **ohne render()** regulär als R-Skripte ausgeführt werden. Es wird in diesem Fall kein PDF-Bericht erstellt und Diagramme werden nicht abgespeichert.
- 
-Um den **vollständigen Datensatz** zu kompilieren, sowie Compilation Report und Codebook zu erstellen, kopieren Sie bitte alle im Source-Archiv bereitgestellten Dateien in einen leeren Ordner (!) und führen mit R diesen Befehl aus:
-
-
-```
-source("00_C-BVerfGE_FullCompile.R")
-```
-
-Bei der Prüfung der GPG-Signatur im Codebook wird ein Fehler auftreten und im Codebook dokumentiert, weil die Daten nicht mit meiner Original-Signatur versehen sind. Dieser Fehler hat jedoch keine Auswirkungen auf die Funktionalität und hindert die Kompilierung nicht.
 
 
 ## Systemanforderungen
 
-### Betriebssystem
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- 500 MB Speicherplatz auf Festplatte
+- Multi-core CPU empfohlen (8 cores/16 threads für die Referenzdatensätze). 
 
-Das Skript in seiner veröffentlichten Form kann nur unter **Linux** ausgeführt werden, da es Linux-spezifische Optimierungen (z.B. Fork Cluster) und Shell-Kommandos (z.B. OpenSSL) nutzt. Das Skript wurde unter Fedora Linux entwickelt und getestet. Die zur Kompilierung benutzte Version entnehmen Sie bitte dem **sessionInfo()**-Ausdruck am Ende des jeweiligen Compilation Reports.
-
-### Software
-
-Sie müssen die [Programmiersprache R](https://www.r-project.org/) installiert haben. Starten Sie danach eine Session im Ordner des Projekts, Sie sollten automatisch zur Installation aller packages in der empfohlenen Version aufgefordert werden. Andernfalls führen Sie bitte folgenden Befehl aus:
-
-```
-renv::restore()
-```
-
-Um die PDF Reports zu kompilieren benötigen Sie eine LaTeX-Installation. Sie können diese auf Fedora wie folgt installieren:
-
-```
-sudo dnf install texlive-scheme-full
-```
-
-Alternativ können sie das R package **tinytex** installieren.
-
-
-
-### Parallelisierung
 
 In der Standard-Einstellung wird das Skript vollautomatisch die maximale Anzahl an Rechenkernen/Threads auf dem System zu nutzen. Die Anzahl der verwendeten Kerne kann in der Konfigurationsatei angepasst werden. Wenn die Anzahl Threads auf 1 gesetzt wird, ist die Parallelisierung deaktiviert.
 
-### Speicherplatz
 
-Auf der Festplatte sollten 8 GB Speicherplatz vorhanden sein.
+
+## Anleitung
+
+
+### Schritt 1: Ordner vorbereiten
+
+Kopieren Sie bitte den gesamten Source Code in einen leeren Ordner (!), beispielsweise mit:
+
+```
+$ git clone https://github.com/seanfobbe/c-bverfge
+```
+
+Verwenden Sie immer einen separaten und *leeren* Ordner für die Kompilierung. Die Skripte löschen innerhalb des Ordners alle Dateien die den Datensatz verunreinigen könnten --- aber auch nur dort.
+
+
+### Schritt 2: Docker Image erstellen
+
+Ein Docker Image stellt ein komplettes Betriebssystem mit der gesamten verwendeten Software automatisch zusammen. Nutzen Sie zur Erstellung des Images einfach:
+
+```
+$ bash docker-build-image.sh
+```
+
+### Schritt 3: Datensatz kompilieren
+
+Falls Sie zuvor den Datensatz schon einmal kompiliert haben (ob erfolgreich oder erfolglos), können Sie mit folgendem Befehl alle Arbeitsdaten im Ordner löschen:
+
+```
+$ Rscript delete_all_data.R
+```
+
+Den vollständigen Datensatz kompilieren Sie mit folgendem Skript:
+
+```
+$ bash docker-run-project.sh
+```
+
+
+### Ergebnis
+
+Der Datensatz und alle weiteren Ergebnisse sind nun im Ordner `output/` abgelegt.
+
 
 
  
