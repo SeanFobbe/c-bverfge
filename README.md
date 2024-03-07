@@ -82,6 +82,35 @@ Der Datensatz und alle weiteren Ergebnisse sind nun im Ordner `output/` abgelegt
 
 
 
+## Projektstruktur
+
+Die folgende Struktur erläutert die wichtigsten Bestandteile des Projekts. Während der Kompilierung werden weitere Ordner erstellt. Die Endergebnisse werden alle in `output/` abgelegt.
+
+ 
+``` 
+.
+├── 01_C-BVerfGE_CorpusCreation.R   # Erstellt den Datensatz
+├── 02_C-BVerfGE_CodebookCreation.R # Erstellt das Codebook
+├── buttons                    # Buttons (nur optische Bedeutung)
+├── CHANGELOG.md               # Alle Änderungen
+├── etc                        # Spezielle Konfigurations-Dateien
+├── docker-compose.yaml        # Konfiguration für Docker
+├── config.toml                # Zentrale Konfigurations-Datei
+├── data                       # Datensätze, auf denen die Pipeline aufbaut
+├── delete_all_data.R          # Löscht den Datensatz und Zwischenschritte
+├── docker-build-image.sh      # Docker Image erstellen
+├── Dockerfile                 # Definition des Docker Images
+├── docker-run-project.sh      # Docker Image und Datensatz kompilieren
+├── functions                  # Wichtige Schritte der Pipeline
+├── gpg                        # Persönlicher Public GPG-Key für Seán Fobbe
+├── README.md                  # Bedienungsanleitung
+├── run_project.R              # Kompiliert den gesamten Datensatz
+└── tex                        # LaTeX-Templates
+
+
+``` 
+
+
  
 
 ## Weitere Open Access Veröffentlichungen (Fobbe)
