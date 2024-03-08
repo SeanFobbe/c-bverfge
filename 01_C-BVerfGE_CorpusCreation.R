@@ -954,17 +954,6 @@ print(missing)
 
 #'# HTML verarbeiten
 
-#+
-#'## Funktion anzeigen: f.bverfg.extract.meta
-
-print(f.bverfg.extract.meta)
-
-#+
-#'## Funktion anzeigen: f.bverfg.extract.content
-
-
-print(f.bverfg.extract.content)
-
 
 #+
 #'## HTML-Dateien definieren
@@ -1080,12 +1069,6 @@ length(files.pdf)
 
 
 
-#'## PDF extrahieren: Funktion anzeigen
-#+ results = "asis"
-print(f.future_pdf_to_txt)
-
-
-
 
 #'## Text Extrahieren
 
@@ -1142,9 +1125,6 @@ setDT(txt.bverfg)
 #' Durch Zeilenumbrüche getrennte Wörter stellen bei aus PDF-Dateien gewonnene Text-Korpora ein erhebliches Problem dar. Wörter werden dadurch in zwei sinnentleerte Tokens getrennt, statt ein einzelnes und sinnvolles Token zu bilden. Dieser Schritt entfernt die Bindestriche, den Zeilenumbruch und ggf. dazwischenliegende Leerzeichen.
 
 #+
-#'### Funktion anzeigen
-print(f.hyphen.remove)
-
 #'### Funktion ausführen
 txt.bverfg[, text := lapply(.(text), f.hyphen.remove)]
 dt.segmented.full[, text := lapply(.(text), f.hyphen.remove)]
@@ -1562,12 +1542,6 @@ dt.segmented.full$entscheidung_typ <- entscheidung_typ.segmented
 #'# Frequenztabellen erstellen
 
 #+
-#'## Funktion anzeigen
-
-#+ results = "asis"
-print(f.fast.freqtable)
-
-
 #'## Ignorierte Variablen
 print(config$freqtable$ignore)
 
@@ -1919,10 +1893,6 @@ ggplot(data = freqtable) +
 #' An dieser Stelle werden für jedes Dokument die Anzahl Zeichen, Tokens, Typen und Sätze berechnet und mit den jeweiligen Metadaten verknüpft. Das Ergebnis ist grundsätzlich identisch mit dem eigentlichen Datensatz, nur ohne den Text der Entscheidungen.
 
 
-#+
-#'### Funktion anzeigen
-print(f.future_lingsummarize)
-
 
 
 
@@ -2248,10 +2218,6 @@ ggplot(data = meta.bverfg)+
 
 
 #'# Linguistische Annotationen berechnen
-
-#'## Funktion anzeigen: f.future_spacyparse
-
-print(f.future_spacyparse)
 
 #'## Berechnungen durchführen
 
@@ -2751,10 +2717,6 @@ zip(paste(prefix.files,
 files.zip <- list.files(pattern = "\\.zip$",
                         ignore.case = TRUE)
 
-
-#'## Funktion anzeigen: future_multihashes
-
-print(f.future_multihashes)
 
 
 #'## Hashes berechnen
