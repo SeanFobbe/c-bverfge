@@ -9,7 +9,7 @@
 - Vereinfachung der Repository-Struktur
 - Erstellung des Source-Archivs aus dem Git Manifest
 - Entfernung des Submodules und Überführung der Funktionen in das Hautprojekt
-- Entfernung des GPG Checks im Codebook um einn durchgängig automatisierten Prozess zu gewährleisten. Mit GPG signiert werden in Zukunft Compilation Report, Codebook und CSV-Datei der Signaturen.
+- Entfernung des GPG Checks im Codebook um einen durchgängig automatisierten Prozess zu gewährleisten. Mit GPG signiert werden in Zukunft Compilation Report, Codebook und CSV-Datei der Signaturen.
 - Funktionen werden nicht mehr vollständig im Compilation Report abgedruckt um die Fehlerrate bei der LaTeX-Kompilierung zu senken
 
 
