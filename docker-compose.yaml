@@ -8,3 +8,5 @@ services:
     volumes:
       - .:/c-bverfge
       - ./etc/gitconfig:/etc/gitconfig
+    environment:
+      - TZ=Europe/Berlin
