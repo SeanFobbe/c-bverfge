@@ -1,7 +1,13 @@
 # Changelog
 
+
 ## Version \version
 
+- Vollständige Aktualisierung der Daten
+- Einstellung Docker Zeitzone auf Berlin
+
+
+## Version 2024-03-08
 
 - Vollständige Aktualisierung der Daten (bis einschließlich Band 164)
 - Über 40 neue historische Entscheidungen aus dem Zeitraum 1970 bis 1998 (u.a. Mauerschützen)
