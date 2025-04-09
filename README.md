@@ -1,3 +1,10 @@
+# ACHTUNG: Weiterentwicklung ab sofort auf Codeberg
+
+Die Weiterentwicklung dieses Projekts findet ab sofort auf Codeberg statt: https://codeberg.org/seanfobbe/c-bverfge
+
+Das GitHub repository ist nur noch als Archivfassung verfügbar.
+
+
 # Corpus der amtlichen Entscheidungssamlung des Bundesverfassungsgerichts (C-BVerfGE)
 
 
